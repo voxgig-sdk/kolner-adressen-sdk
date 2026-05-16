@@ -1,0 +1,28 @@
+# BasicDatastoreSearchFlow
+
+main: kit: flow: BasicDatastoreSearchFlow:
+{
+  entity: "datastore_search",
+  kind: "basic",
+  name: "BasicDatastoreSearchFlow",
+  step: [
+    {
+      input: {
+        ref: "datastore_search_ref01",
+        srcdatavar: "datastore_search_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-datastore_search_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDatastoreSearchFlow"
+}

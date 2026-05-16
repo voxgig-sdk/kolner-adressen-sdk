@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "address": {
+      "ADDRESS00": {
+        "description": "s32",
+        "format": "s33",
+        "id": "ADDRESS00",
+        "name": "s35",
+        "url": "s36"
+      },
+      "ADDRESS01": {
+        "description": "s64",
+        "format": "s65",
+        "id": "ADDRESS01",
+        "name": "s67",
+        "url": "s68"
+      },
+      "ADDRESS02": {
+        "description": "s96",
+        "format": "s97",
+        "id": "ADDRESS02",
+        "name": "s99",
+        "url": "s9a"
+      }
+    }
+  },
+  "new": {
+    "address": {
+      "address_ref01": {
+        "description": "sc8",
+        "format": "sc9",
+        "name": "scb",
+        "url": "scc"
+      }
+    }
+  }
+}

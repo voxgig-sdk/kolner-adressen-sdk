@@ -1,0 +1,29 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "statistik-rbs@stadt-koeln.de"
+        name: "Amt für Stadtentwicklung und Statistik - Raumbezogene Statistik Stadt Köln"
+      }
+      description: "This API provides access to a dataset containing addresses within the city of Cologne. It includes geospatial information and various formats for data retrieval, enabling navigation and analysis of geographic data related to buildings and urban structures. The dataset contains approximately 163,000 address objects with geospatial coordinates and building information from the municipal area classification system (Kommunale Gebietsgliederung)."
+      license: {
+        name: "Datenlizenz Deutschland – Zero – Version 2.0"
+        url: "https://www.govdata.de/dl-de/zero-2-0"
+      }
+      servers: [
+        {
+          description: "Offene Daten Köln Production Server"
+          url: "https://offenedaten-koeln.de"
+        }
+      ]
+      title: "Kölner Adressen API"
+      version: "1.0.0"
+      "x-documentation": "https://offenedaten-koeln.de/dataset/adressen-k%C3%B6ln"
+    }
+  }
+}
+
+}

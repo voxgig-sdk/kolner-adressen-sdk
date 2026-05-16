@@ -1,0 +1,22 @@
+# BasicAddressFlow
+
+main: kit: flow: BasicAddressFlow:
+{
+  entity: "address",
+  kind: "basic",
+  name: "BasicAddressFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "address_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAddressFlow"
+}

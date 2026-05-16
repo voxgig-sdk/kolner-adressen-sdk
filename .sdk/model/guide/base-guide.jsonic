@@ -1,0 +1,20 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: address: {
+    path: "/dataset/adressen-k%C3%B6ln": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: datastore_search: {
+    path: "/api/3/action/datastore_search": {
+      op: load: method: *GET
+    }
+  }
+
+}

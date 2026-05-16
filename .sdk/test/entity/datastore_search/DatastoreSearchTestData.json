@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "datastore_search": {
+      "DATASTORE_SEARCH00": {
+        "result": {},
+        "success": false,
+        "id": "DATASTORE_SEARCH00"
+      },
+      "DATASTORE_SEARCH01": {
+        "result": {},
+        "success": false,
+        "id": "DATASTORE_SEARCH01"
+      },
+      "DATASTORE_SEARCH02": {
+        "result": {},
+        "success": false,
+        "id": "DATASTORE_SEARCH02"
+      }
+    }
+  },
+  "new": {
+    "datastore_search": {
+      "datastore_search_ref01": {
+        "result": {},
+        "success": false
+      }
+    }
+  }
+}
