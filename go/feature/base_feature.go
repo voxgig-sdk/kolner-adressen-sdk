@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/kolner-adressen-sdk/core"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/core"
 )
 
 type BaseFeature struct {

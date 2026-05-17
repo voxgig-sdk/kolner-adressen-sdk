@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/kolner-adressen-sdk"
-	"github.com/voxgig-sdk/kolner-adressen-sdk/core"
+	sdk "github.com/voxgig-sdk/kolner-adressen-sdk/go"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/core"
 )
 
 func TestDatastoreSearchDirect(t *testing.T) {

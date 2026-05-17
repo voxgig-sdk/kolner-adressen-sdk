@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/kolner-adressen-sdk"
-	"github.com/voxgig-sdk/kolner-adressen-sdk/core"
+	sdk "github.com/voxgig-sdk/kolner-adressen-sdk/go"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/kolner-adressen-sdk/go/utility/struct"
 )
 
 func TestAddressEntity(t *testing.T) {

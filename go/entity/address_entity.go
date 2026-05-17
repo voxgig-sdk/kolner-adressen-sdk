@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/kolner-adressen-sdk/core"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/kolner-adressen-sdk/go/utility/struct"
 )
 
 type AddressEntity struct {

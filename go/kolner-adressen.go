@@ -1,10 +1,10 @@
 package voxgigkolneradressensdk
 
 import (
-	"github.com/voxgig-sdk/kolner-adressen-sdk/core"
-	"github.com/voxgig-sdk/kolner-adressen-sdk/entity"
-	"github.com/voxgig-sdk/kolner-adressen-sdk/feature"
-	_ "github.com/voxgig-sdk/kolner-adressen-sdk/utility"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/core"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/entity"
+	"github.com/voxgig-sdk/kolner-adressen-sdk/go/feature"
+	_ "github.com/voxgig-sdk/kolner-adressen-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
