@@ -61,14 +61,12 @@ def _address_direct_setup(mockres):
     env = runner.env_override({
         "KOLNERADRESSEN_TEST_ADDRESS_ENTID": {},
         "KOLNERADRESSEN_TEST_LIVE": "FALSE",
-        "KOLNERADRESSEN_APIKEY": "NONE",
     })
 
     live = env.get("KOLNERADRESSEN_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("KOLNERADRESSEN_APIKEY"),
         }
         client = KolnerAdressenSDK(merged_opts)
         return {

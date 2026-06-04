@@ -82,7 +82,6 @@ def datastore_search_basic_setup(extra)
     "KOLNERADRESSEN_TEST_DATASTORE_SEARCH_ENTID" => idmap,
     "KOLNERADRESSEN_TEST_LIVE" => "FALSE",
     "KOLNERADRESSEN_TEST_EXPLAIN" => "FALSE",
-    "KOLNERADRESSEN_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +93,6 @@ def datastore_search_basic_setup(extra)
   if env["KOLNERADRESSEN_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["KOLNERADRESSEN_APIKEY"],
       },
       extra || {},
     ])

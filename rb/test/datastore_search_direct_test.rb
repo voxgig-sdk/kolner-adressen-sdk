@@ -67,14 +67,12 @@ def datastore_search_direct_setup(mockres)
   env = Runner.env_override({
     "KOLNERADRESSEN_TEST_DATASTORE_SEARCH_ENTID" => {},
     "KOLNERADRESSEN_TEST_LIVE" => "FALSE",
-    "KOLNERADRESSEN_APIKEY" => "NONE",
   })
 
   live = env["KOLNERADRESSEN_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["KOLNERADRESSEN_APIKEY"],
     }
     client = KolnerAdressenSDK.new(merged_opts)
     return {

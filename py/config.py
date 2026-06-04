@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://offenedaten-koeln.de",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

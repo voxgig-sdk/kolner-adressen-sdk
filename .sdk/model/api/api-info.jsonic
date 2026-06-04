@@ -22,8 +22,30 @@ main: {
       title: "Kölner Adressen API"
       version: "1.0.0"
       "x-documentation": "https://offenedaten-koeln.de/dataset/adressen-k%C3%B6ln"
+      tagline: "Search around 163,000 official Cologne street addresses with geo-coordinates from the city's open data portal"
+      homepage: "https://offenedaten-koeln.de"
+      docs_url: "https://offenedaten-koeln.de/api"
+      license_short: "Datenlizenz Deutschland – Zero – Version 2.0 (public domain equivalent)"
+      license_md: `- Released under [Datenlizenz Deutschland – Zero – Version 2.0](https://www.govdata.de/dl-de/zero-2-0), the German public-sector equivalent of CC0
+- Free to use, redistribute, adapt and combine with other data, including for commercial purposes
+- No attribution legally required, though crediting the Stadt Köln open data portal is good practice
+- Data is provided as-is with no warranty as to accuracy or completeness`
+      about_md: `This SDK wraps the address dataset published on [Offene Daten Köln](https://offenedaten-koeln.de), the open data portal operated by the [City of Cologne (Stadt Köln)](https://www.stadt-koeln.de). The portal runs on DKAN (a Drupal-based open-data platform) and exposes its tabular datasets through a CKAN-compatible \`datastore_search\` HTTP API.
+
+The dataset contains roughly 163,000 official street addresses within the city of Cologne, each enriched with geographic coordinates so records can be mapped or used as a lookup source for geocoding workflows.
+
+What you get from the API:
+
+- Free-text and field-filtered search across the Cologne address table via \`datastore_search\`
+- Per-record address fields (street, number, postcode, district) together with geo-coordinates
+- Standard pagination, limit and offset parameters inherited from the DKAN/CKAN datastore API
+
+The API is read-only and unauthenticated. As the portal is publicly funded infrastructure, please use reasonable request rates; no specific rate limits are documented.`
+      entity_desc: {
+        address: "An individual Cologne street address record including street name, house number, postcode, district and geographic coordinates"
+        datastore_search: "The underlying DKAN/CKAN `datastore_search` endpoint used to query the address resource with filters, full-text search and pagination"
+      }
+      auth: false
     }
   }
-}
-
 }

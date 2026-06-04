@@ -92,7 +92,6 @@ function address_basic_setup(extra)
     ["KOLNERADRESSEN_TEST_ADDRESS_ENTID"] = idmap,
     ["KOLNERADRESSEN_TEST_LIVE"] = "FALSE",
     ["KOLNERADRESSEN_TEST_EXPLAIN"] = "FALSE",
-    ["KOLNERADRESSEN_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function address_basic_setup(extra)
   if env["KOLNERADRESSEN_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["KOLNERADRESSEN_APIKEY"],
       },
       extra or {},
     })
