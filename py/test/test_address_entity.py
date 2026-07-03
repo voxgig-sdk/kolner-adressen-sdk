@@ -92,6 +92,7 @@ def _address_basic_setup(extra):
         "KOLNERADRESSEN_TEST_ADDRESS_ENTID": idmap,
         "KOLNERADRESSEN_TEST_LIVE": "FALSE",
         "KOLNERADRESSEN_TEST_EXPLAIN": "FALSE",
+        "KOLNERADRESSEN_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _address_basic_setup(extra):
     if env.get("KOLNERADRESSEN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("KOLNERADRESSEN_APIKEY"),
             },
             extra or {},
         ])

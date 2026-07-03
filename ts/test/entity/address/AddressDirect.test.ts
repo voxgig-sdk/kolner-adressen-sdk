@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'KOLNERADRESSEN_TEST_ADDRESS_ENTID': {},
     'KOLNERADRESSEN_TEST_LIVE': 'FALSE',
+    'KOLNERADRESSEN_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.KOLNERADRESSEN_TEST_LIVE
 
   if (live) {
     const client = new KolnerAdressenSDK({
+      apikey: env.KOLNERADRESSEN_APIKEY,
     })
 
     let idmap: any = env['KOLNERADRESSEN_TEST_ADDRESS_ENTID']

@@ -1,22 +1,8 @@
 # KolnerAdressen SDK
 
-Search around 163,000 official Cologne street addresses with geo-coordinates from the city's open data portal
+Kölner Adressen API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Kölner Adressen API
-
-This SDK wraps the address dataset published on [Offene Daten Köln](https://offenedaten-koeln.de), the open data portal operated by the [City of Cologne (Stadt Köln)](https://www.stadt-koeln.de). The portal runs on DKAN (a Drupal-based open-data platform) and exposes its tabular datasets through a CKAN-compatible `datastore_search` HTTP API.
-
-The dataset contains roughly 163,000 official street addresses within the city of Cologne, each enriched with geographic coordinates so records can be mapped or used as a lookup source for geocoding workflows.
-
-What you get from the API:
-
-- Free-text and field-filtered search across the Cologne address table via `datastore_search`
-- Per-record address fields (street, number, postcode, district) together with geo-coordinates
-- Standard pagination, limit and offset parameters inherited from the DKAN/CKAN datastore API
-
-The API is read-only and unauthenticated. As the portal is publicly funded infrastructure, please use reasonable request rates; no specific rate limits are documented.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install kolner-adressen-sdk
 luarocks install kolner-adressen-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { KolnerAdressenSDK } from 'kolner-adressen'
 
-const client = new KolnerAdressenSDK({})
+const client = new KolnerAdressenSDK({
+  apikey: process.env.KOLNER-ADRESSEN_APIKEY,
+})
 
 // List all addresss
 const addresss = await client.Address().list()
+console.log(addresss.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Address** | An individual Cologne street address record including street name, house number, postcode, district and geographic coordinates | `/dataset/adressen-k%C3%B6ln` |
-| **DatastoreSearch** | The underlying DKAN/CKAN `datastore_search` endpoint used to query the address resource with filters, full-text search and pagination | `/api/3/action/datastore_search` |
+| **Address** |  | `/dataset/adressen-k%C3%B6ln` |
+| **DatastoreSearch** |  | `/api/3/action/datastore_search` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from kolneradressen_sdk import KolnerAdressenSDK
 
-client = KolnerAdressenSDK({})
+client = KolnerAdressenSDK({
+    "apikey": os.environ.get("KOLNER-ADRESSEN_APIKEY"),
+})
 
 # List all addresss
-addresss, err = client.Address(None).list(None, None)
+addresss, err = client.Address().list()
+print(addresss)
 ```
 
 ### PHP
@@ -127,10 +119,13 @@ addresss, err = client.Address(None).list(None, None)
 <?php
 require_once 'kolneradressen_sdk.php';
 
-$client = new KolnerAdressenSDK([]);
+$client = new KolnerAdressenSDK([
+    "apikey" => getenv("KOLNER-ADRESSEN_APIKEY"),
+]);
 
 // List all addresss
-[$addresss, $err] = $client->Address(null)->list(null, null);
+[$addresss, $err] = $client->Address()->list();
+print_r($addresss);
 ```
 
 ### Golang
@@ -138,10 +133,13 @@ $client = new KolnerAdressenSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/kolner-adressen-sdk/go"
 
-client := sdk.NewKolnerAdressenSDK(map[string]any{})
+client := sdk.NewKolnerAdressenSDK(map[string]any{
+    "apikey": os.Getenv("KOLNER-ADRESSEN_APIKEY"),
+})
 
 // List all addresss
 addresss, err := client.Address(nil).List(nil, nil)
+fmt.Println(addresss)
 ```
 
 ### Ruby
@@ -149,10 +147,13 @@ addresss, err := client.Address(nil).List(nil, nil)
 ```ruby
 require_relative "KolnerAdressen_sdk"
 
-client = KolnerAdressenSDK.new({})
+client = KolnerAdressenSDK.new({
+  "apikey" => ENV["KOLNER-ADRESSEN_APIKEY"],
+})
 
 # List all addresss
-addresss, err = client.Address(nil).list(nil, nil)
+addresss, err = client.Address().list
+puts addresss
 ```
 
 ### Lua
@@ -160,10 +161,13 @@ addresss, err = client.Address(nil).list(nil, nil)
 ```lua
 local sdk = require("kolner-adressen_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("KOLNER-ADRESSEN_APIKEY"),
+})
 
 -- List all addresss
-local addresss, err = client:Address(nil):list(nil, nil)
+local addresss, err = client:Address():list()
+print(addresss)
 ```
 
 ## Unit testing in offline mode
@@ -182,25 +186,21 @@ const result = await client.Address().load({ id: 'test01' })
 ### Python
 
 ```python
-client = KolnerAdressenSDK.test(None, None)
-result, err = client.Address(None).load(
-    {"id": "test01"}, None
-)
+client = KolnerAdressenSDK.test()
+result, err = client.Address().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = KolnerAdressenSDK::test(null, null);
-[$result, $err] = $client->Address(null)->load(
-    ["id" => "test01"], null
-);
+$client = KolnerAdressenSDK::test();
+[$result, $err] = $client->Address()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Address(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -209,19 +209,15 @@ result, err := client.Address(nil).Load(
 ### Ruby
 
 ```ruby
-client = KolnerAdressenSDK.test(nil, nil)
-result, err = client.Address(nil).load(
-  { "id" => "test01" }, nil
-)
+client = KolnerAdressenSDK.test
+result, err = client.Address().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Address(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Address():load({ id = "test01" })
 ```
 
 ## How it works
@@ -325,16 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Kölner Adressen API
-
-- Upstream: [https://offenedaten-koeln.de](https://offenedaten-koeln.de)
-- API docs: [https://offenedaten-koeln.de/api](https://offenedaten-koeln.de/api)
-
-- Released under [Datenlizenz Deutschland – Zero – Version 2.0](https://www.govdata.de/dl-de/zero-2-0), the German public-sector equivalent of CC0
-- Free to use, redistribute, adapt and combine with other data, including for commercial purposes
-- No attribution legally required, though crediting the Stadt Köln open data portal is good practice
-- Data is provided as-is with no warranty as to accuracy or completeness
 
 ---
 

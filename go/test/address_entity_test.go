@@ -119,6 +119,7 @@ func addressBasicSetup(extra map[string]any) *entityTestSetup {
 		"KOLNERADRESSEN_TEST_ADDRESS_ENTID": idmap,
 		"KOLNERADRESSEN_TEST_LIVE":      "FALSE",
 		"KOLNERADRESSEN_TEST_EXPLAIN":   "FALSE",
+		"KOLNERADRESSEN_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["KOLNERADRESSEN_TEST_ADDRESS_ENTID"])
@@ -129,6 +130,7 @@ func addressBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["KOLNERADRESSEN_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["KOLNERADRESSEN_APIKEY"],
 			},
 			extra,
 		})
