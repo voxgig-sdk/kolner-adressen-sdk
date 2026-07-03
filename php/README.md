@@ -10,7 +10,7 @@ The PHP SDK for the KolnerAdressen API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/kolner-adressen-sdk
+composer require voxgig-sdk/kolner-adressen
 ```
 
 

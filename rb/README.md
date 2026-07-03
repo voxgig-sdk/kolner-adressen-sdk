@@ -10,13 +10,13 @@ The Ruby SDK for the KolnerAdressen API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install kolner-adressen-sdk
+gem install voxgig-sdk-kolner-adressen
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "kolner-adressen-sdk"
+gem "voxgig-sdk-kolner-adressen"
 ```
 
 Then run:

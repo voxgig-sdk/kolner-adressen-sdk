@@ -10,7 +10,7 @@ The TypeScript SDK for the KolnerAdressen API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install kolner-adressen
+npm install @voxgig-sdk/kolner-adressen
 ```
 ## Tutorial: your first API call
 

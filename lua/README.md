@@ -10,7 +10,7 @@ The Lua SDK for the KolnerAdressen API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install kolner-adressen-sdk
+luarocks install voxgig-sdk-kolner-adressen
 ```
 
 If the module is not yet published, add the source directory to

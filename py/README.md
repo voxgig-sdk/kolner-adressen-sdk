@@ -10,7 +10,7 @@ The Python SDK for the KolnerAdressen API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install kolner-adressen-sdk
+pip install voxgig-sdk-kolner-adressen
 ```
 
 Or install from source:
