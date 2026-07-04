@@ -3,6 +3,8 @@
 import { AddressEntity } from './entity/AddressEntity'
 import { DatastoreSearchEntity } from './entity/DatastoreSearchEntity'
 
+export type * from './KolnerAdressenTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class KolnerAdressenSDK {
 
 
 
+  _address?: AddressEntity
+
+  // Idiomatic facade: `client.address.list()` / `client.address.load({ id })`.
+  get address(): AddressEntity {
+    return (this._address ??= new AddressEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.address` instead. */
   Address(data?: any) {
     const self = this
     return new AddressEntity(self,data)
   }
 
 
+  _datastore_search?: DatastoreSearchEntity
+
+  // Idiomatic facade: `client.datastore_search.list()` / `client.datastore_search.load({ id })`.
+  get datastore_search(): DatastoreSearchEntity {
+    return (this._datastore_search ??= new DatastoreSearchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.datastore_search` instead. */
   DatastoreSearch(data?: any) {
     const self = this
     return new DatastoreSearchEntity(self,data)

@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:address():list() / client:address():load({ id = ... })
+function KolnerAdressenSDK:address(data)
+  local EntityMod = require("entity.address_entity")
+  if data == nil then
+    if self._address == nil then
+      self._address = EntityMod.new(self, nil)
+    end
+    return self._address
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:address() instead.
 function KolnerAdressenSDK:Address(data)
   local EntityMod = require("entity.address_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:datastore_search():list() / client:datastore_search():load({ id = ... })
+function KolnerAdressenSDK:datastore_search(data)
+  local EntityMod = require("entity.datastore_search_entity")
+  if data == nil then
+    if self._datastore_search == nil then
+      self._datastore_search = EntityMod.new(self, nil)
+    end
+    return self._datastore_search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:datastore_search() instead.
 function KolnerAdressenSDK:DatastoreSearch(data)
   local EntityMod = require("entity.datastore_search_entity")
   return EntityMod.new(self, data)

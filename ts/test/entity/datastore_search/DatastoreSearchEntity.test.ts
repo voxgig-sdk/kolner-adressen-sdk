@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID': idmap,
     'KOLNER_ADRESSEN_TEST_LIVE': 'FALSE',
     'KOLNER_ADRESSEN_TEST_EXPLAIN': 'FALSE',
-    'KOLNER_ADRESSEN_APIKEY': 'NONE',
   })
 
   idmap = env['KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new KolnerAdressenSDK(merge([
       {
-        apikey: env.KOLNER_ADRESSEN_APIKEY,
       },
       extra
     ]))

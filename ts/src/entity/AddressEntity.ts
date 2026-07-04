@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Address,
+  AddressListMatch,
+} from '../KolnerAdressenTypes'
 
 // TODO: needs Entity superclass
-class AddressEntity extends KolnerAdressenEntityBase {
+class AddressEntity extends KolnerAdressenEntityBase<Address> {
 
   constructor(client: KolnerAdressenSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class AddressEntity extends KolnerAdressenEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: AddressListMatch, ctrl?: Control): Promise<Address[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class AddressEntity extends KolnerAdressenEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Address[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

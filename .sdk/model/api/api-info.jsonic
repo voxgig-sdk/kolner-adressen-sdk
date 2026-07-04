@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         email: "statistik-rbs@stadt-koeln.de"
         name: "Amt für Stadtentwicklung und Statistik - Raumbezogene Statistik Stadt Köln"

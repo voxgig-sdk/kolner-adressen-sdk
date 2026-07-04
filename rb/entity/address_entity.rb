@@ -45,6 +45,7 @@ class AddressEntity
     end
   end
 
+  # @return [Address, Hash] the current Address data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class AddressEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Address fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class AddressEntity
   
 
   
+  # List Address items matching the given filter.
+  #
+  # @param reqmatch [AddressListMatch, Hash, nil] match filter (any subset of Address fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Address>, Array] the matching Address items; raises KolnerAdressenError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

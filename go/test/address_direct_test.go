@@ -93,14 +93,12 @@ func addressDirectSetup(mockres any) *addressDirectSetupResult {
 	env := envOverride(map[string]any{
 		"KOLNERADRESSEN_TEST_ADDRESS_ENTID": map[string]any{},
 		"KOLNERADRESSEN_TEST_LIVE":    "FALSE",
-		"KOLNERADRESSEN_APIKEY":       "NONE",
 	})
 
 	live := env["KOLNERADRESSEN_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["KOLNERADRESSEN_APIKEY"],
 		}
 		client := sdk.NewKolnerAdressenSDK(mergedOpts)
 

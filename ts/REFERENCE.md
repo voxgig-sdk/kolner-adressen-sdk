@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `KolnerAdressenSDK.test()`.
 ## AddressEntity
 
 ```ts
-const address = client.Address()
+const address = client.address
 ```
 
 ### Fields
@@ -142,7 +141,7 @@ const address = client.Address()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Address().list()
+const results = await client.address.list()
 ```
 
 ### Common Methods
@@ -176,7 +175,7 @@ Return a copy of the entity options.
 ## DatastoreSearchEntity
 
 ```ts
-const datastore_search = client.DatastoreSearch()
+const datastore_search = client.datastore_search
 ```
 
 ### Fields
@@ -193,7 +192,7 @@ const datastore_search = client.DatastoreSearch()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DatastoreSearch().load({ id: 'datastore_search_id' })
+const result = await client.datastore_search.load({ id: 'datastore_search_id' })
 ```
 
 ### Common Methods

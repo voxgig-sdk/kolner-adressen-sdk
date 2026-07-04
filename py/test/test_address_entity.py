@@ -50,8 +50,7 @@ class TestAddressEntity:
         address_ref01_ent = client.Address(None)
         address_ref01_match = {}
 
-        address_ref01_list_result, err = address_ref01_ent.list(address_ref01_match, None)
-        assert err is None
+        address_ref01_list_result = address_ref01_ent.list(address_ref01_match, None)
         assert isinstance(address_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _address_basic_setup(extra):
         "KOLNERADRESSEN_TEST_ADDRESS_ENTID": idmap,
         "KOLNERADRESSEN_TEST_LIVE": "FALSE",
         "KOLNERADRESSEN_TEST_EXPLAIN": "FALSE",
-        "KOLNERADRESSEN_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _address_basic_setup(extra):
     if env.get("KOLNERADRESSEN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("KOLNERADRESSEN_APIKEY"),
             },
             extra or {},
         ])

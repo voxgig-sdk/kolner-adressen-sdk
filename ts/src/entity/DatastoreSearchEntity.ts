@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  DatastoreSearch,
+  DatastoreSearchLoadMatch,
+} from '../KolnerAdressenTypes'
 
 // TODO: needs Entity superclass
-class DatastoreSearchEntity extends KolnerAdressenEntityBase {
+class DatastoreSearchEntity extends KolnerAdressenEntityBase<DatastoreSearch> {
 
   constructor(client: KolnerAdressenSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class DatastoreSearchEntity extends KolnerAdressenEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DatastoreSearchLoadMatch, ctrl?: Control): Promise<DatastoreSearch> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class DatastoreSearchEntity extends KolnerAdressenEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<DatastoreSearch> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

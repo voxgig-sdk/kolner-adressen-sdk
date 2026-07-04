@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## AddressEntity
 
 ```lua
-local address = client:Address(nil)
+local address = client:address(nil)
 ```
 
 ### Fields
@@ -108,7 +107,7 @@ local address = client:Address(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Address():list()
+local results, err = client:address():list()
 ```
 
 ### Common Methods
@@ -144,7 +143,7 @@ Return the entity name.
 ## DatastoreSearchEntity
 
 ```lua
-local datastore_search = client:DatastoreSearch(nil)
+local datastore_search = client:datastore_search(nil)
 ```
 
 ### Fields
@@ -161,7 +160,7 @@ local datastore_search = client:DatastoreSearch(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DatastoreSearch():load({ id = "datastore_search_id" })
+local result, err = client:datastore_search():load({ id = "datastore_search_id" })
 ```
 
 ### Common Methods

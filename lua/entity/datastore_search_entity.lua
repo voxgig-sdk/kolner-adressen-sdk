@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DatastoreSearchLoadMatch
+---@param ctrl? table
+---@return DatastoreSearch
+---@return string? err
 function DatastoreSearchEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

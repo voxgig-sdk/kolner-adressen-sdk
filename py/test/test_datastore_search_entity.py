@@ -49,8 +49,7 @@ class TestDatastoreSearchEntity:
         # LOAD
         datastore_search_ref01_ent = client.DatastoreSearch(None)
         datastore_search_ref01_match_dt0 = {}
-        datastore_search_ref01_data_dt0_loaded, err = datastore_search_ref01_ent.load(datastore_search_ref01_match_dt0, None)
-        assert err is None
+        datastore_search_ref01_data_dt0_loaded = datastore_search_ref01_ent.load(datastore_search_ref01_match_dt0, None)
         assert datastore_search_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _datastore_search_basic_setup(extra):
         "KOLNERADRESSEN_TEST_DATASTORE_SEARCH_ENTID": idmap,
         "KOLNERADRESSEN_TEST_LIVE": "FALSE",
         "KOLNERADRESSEN_TEST_EXPLAIN": "FALSE",
-        "KOLNERADRESSEN_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _datastore_search_basic_setup(extra):
     if env.get("KOLNERADRESSEN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("KOLNERADRESSEN_APIKEY"),
             },
             extra or {},
         ])

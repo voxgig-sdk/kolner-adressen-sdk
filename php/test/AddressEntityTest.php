@@ -50,8 +50,7 @@ class AddressEntityTest extends TestCase
         $address_ref01_ent = $client->Address(null);
         $address_ref01_match = [];
 
-        [$address_ref01_list_result, $err] = $address_ref01_ent->list($address_ref01_match, null);
-        $this->assertNull($err);
+        $address_ref01_list_result = $address_ref01_ent->list($address_ref01_match, null);
         $this->assertIsArray($address_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function address_basic_setup($extra)
         "KOLNERADRESSEN_TEST_ADDRESS_ENTID" => $idmap,
         "KOLNERADRESSEN_TEST_LIVE" => "FALSE",
         "KOLNERADRESSEN_TEST_EXPLAIN" => "FALSE",
-        "KOLNERADRESSEN_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function address_basic_setup($extra)
     if ($env["KOLNERADRESSEN_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["KOLNERADRESSEN_APIKEY"],
             ],
             $extra ?? [],
         ]);

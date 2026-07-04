@@ -245,11 +245,17 @@ func (sdk *KolnerAdressenSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Address returns a Address entity bound to this client.
+// Idiomatic usage: client.Address(nil).List(nil, nil) or
+// client.Address(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *KolnerAdressenSDK) Address(data map[string]any) KolnerAdressenEntity {
 	return NewAddressEntityFunc(sdk, data)
 }
 
 
+// DatastoreSearch returns a DatastoreSearch entity bound to this client.
+// Idiomatic usage: client.DatastoreSearch(nil).List(nil, nil) or
+// client.DatastoreSearch(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *KolnerAdressenSDK) DatastoreSearch(data map[string]any) KolnerAdressenEntity {
 	return NewDatastoreSearchEntityFunc(sdk, data)
 }

@@ -144,16 +144,23 @@ class KolnerAdressenSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class KolnerAdressenSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class KolnerAdressenSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def address(self):
+        """Idiomatic facade: client.address.list() / client.address.load({"id": ...})."""
+        from entity.address_entity import AddressEntity
+        cached = getattr(self, "_address", None)
+        if cached is None:
+            cached = AddressEntity(self, None)
+            self._address = cached
+        return cached
 
     def Address(self, data=None):
+        # Deprecated: use client.address instead.
         from entity.address_entity import AddressEntity
         return AddressEntity(self, data)
 
 
+    @property
+    def datastore_search(self):
+        """Idiomatic facade: client.datastore_search.list() / client.datastore_search.load({"id": ...})."""
+        from entity.datastore_search_entity import DatastoreSearchEntity
+        cached = getattr(self, "_datastore_search", None)
+        if cached is None:
+            cached = DatastoreSearchEntity(self, None)
+            self._datastore_search = cached
+        return cached
+
     def DatastoreSearch(self, data=None):
+        # Deprecated: use client.datastore_search instead.
         from entity.datastore_search_entity import DatastoreSearchEntity
         return DatastoreSearchEntity(self, data)
 

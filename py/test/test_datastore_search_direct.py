@@ -25,7 +25,7 @@ class TestDatastoreSearchDirect:
         if setup["live"]:
             query["resource_id"] = "c2f2e522-00c5-4c0c-9168-d60e716020a3"
 
-        result, err = client.direct({
+        result = client.direct({
             "path": "api/3/action/datastore_search",
             "method": "GET",
             "params": params,
@@ -35,8 +35,8 @@ class TestDatastoreSearchDirect:
             # Live mode is lenient: synthetic IDs frequently 4xx. Skip
             # rather than fail when the load endpoint isn't reachable
             # with the IDs we can construct from setup.idmap.
-            if err is not None:
-                pytest.skip(f"load call failed (likely synthetic IDs against live API): {err}")
+            if result.get("err") is not None:
+                pytest.skip(f"load call failed (likely synthetic IDs against live API): {result.get('err')}")
                 return
             if not result.get("ok"):
                 pytest.skip("load call not ok (likely synthetic IDs against live API)")
@@ -46,7 +46,6 @@ class TestDatastoreSearchDirect:
                 pytest.skip(f"expected 2xx status, got {status}")
                 return
         else:
-            assert err is None
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
             assert result["data"] is not None
@@ -64,14 +63,12 @@ def _datastore_search_direct_setup(mockres):
     env = runner.env_override({
         "KOLNERADRESSEN_TEST_DATASTORE_SEARCH_ENTID": {},
         "KOLNERADRESSEN_TEST_LIVE": "FALSE",
-        "KOLNERADRESSEN_APIKEY": "NONE",
     })
 
     live = env.get("KOLNERADRESSEN_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("KOLNERADRESSEN_APIKEY"),
         }
         client = KolnerAdressenSDK(merged_opts)
         return {
