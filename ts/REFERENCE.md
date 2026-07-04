@@ -121,7 +121,7 @@ Alias for `KolnerAdressenSDK.test()`.
 ## AddressEntity
 
 ```ts
-const address = client.address
+const address = client.Address()
 ```
 
 ### Fields
@@ -141,7 +141,7 @@ const address = client.address
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.address.list()
+const results = await client.Address().list()
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ Return a copy of the entity options.
 ## DatastoreSearchEntity
 
 ```ts
-const datastore_search = client.datastore_search
+const datastore_search = client.DatastoreSearch()
 ```
 
 ### Fields
@@ -192,7 +192,7 @@ const datastore_search = client.datastore_search
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.datastore_search.load({ id: 'datastore_search_id' })
+const result = await client.DatastoreSearch().load({ id: 'datastore_search_id' })
 ```
 
 ### Common Methods

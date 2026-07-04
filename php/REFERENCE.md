@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AddressEntity
 
 ```php
-$address = $client->address();
+$address = $client->Address();
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ $address = $client->address();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->address()->list([]);
+$results = $client->Address()->list([]);
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ Return the entity name.
 ## DatastoreSearchEntity
 
 ```php
-$datastore_search = $client->datastore_search();
+$datastore_search = $client->DatastoreSearch();
 ```
 
 ### Fields
@@ -162,7 +162,7 @@ $datastore_search = $client->datastore_search();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->datastore_search()->load(["id" => "datastore_search_id"]);
+$result = $client->DatastoreSearch()->load(["id" => "datastore_search_id"]);
 ```
 
 ### Common Methods

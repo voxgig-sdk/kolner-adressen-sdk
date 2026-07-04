@@ -28,16 +28,14 @@ require_relative "KolnerAdressen_sdk"
 client = KolnerAdressenSDK.new
 ```
 
-### 2. List addresss
+### 2. List address records
 
 ```ruby
 begin
-  result = client.address.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Address records — iterate directly.
+  addresss = client.Address.list
+  addresss.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = KolnerAdressenSDK.test
+client = KolnerAdressenSDK.test({
+  "entity" => { "address" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.address.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+address = client.Address.load({ "id" => "test01" })
+puts address
 ```
 
 ### Use a custom fetch function
@@ -167,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Address` | `(data) -> AddressEntity` | Create a Address entity instance. |
+| `Address` | `(data) -> AddressEntity` | Create an Address entity instance. |
 | `DatastoreSearch` | `(data) -> DatastoreSearchEntity` | Create a DatastoreSearch entity instance. |
 
 ### Entity interface
@@ -239,7 +241,7 @@ API path: `/api/3/action/datastore_search`
 
 ### Address
 
-Create an instance: `const address = client.address`
+Create an instance: `address = client.Address`
 
 #### Operations
 
@@ -259,14 +261,15 @@ Create an instance: `const address = client.address`
 
 #### Example: List
 
-```ts
-const addresss = await client.address.list()
+```ruby
+# list returns an Array of Address records (raises on error).
+addresss = client.Address.list
 ```
 
 
 ### DatastoreSearch
 
-Create an instance: `const datastore_search = client.datastore_search`
+Create an instance: `datastore_search = client.DatastoreSearch`
 
 #### Operations
 
@@ -283,8 +286,9 @@ Create an instance: `const datastore_search = client.datastore_search`
 
 #### Example: Load
 
-```ts
-const datastore_search = await client.datastore_search.load({ id: 'datastore_search_id' })
+```ruby
+# load returns the bare DatastoreSearch record (raises on error).
+datastore_search = client.DatastoreSearch.load({ "id" => "datastore_search_id" })
 ```
 
 
@@ -359,7 +363,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-address = client.address
+address = client.Address
 address.load({ "id" => "example_id" })
 
 # address.data_get now returns the loaded address data

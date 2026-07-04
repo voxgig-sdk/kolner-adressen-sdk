@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## AddressEntity
 
 ```ruby
-address = client.address
+address = client.Address
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ address = client.address
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.address.list(nil)
+results = client.Address.list(nil)
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## DatastoreSearchEntity
 
 ```ruby
-datastore_search = client.datastore_search
+datastore_search = client.DatastoreSearch
 ```
 
 ### Fields
@@ -163,7 +163,7 @@ datastore_search = client.datastore_search
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.datastore_search.load({ "id" => "datastore_search_id" })
+result = client.DatastoreSearch.load({ "id" => "datastore_search_id" })
 ```
 
 ### Common Methods

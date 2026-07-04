@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:address():list() / client:address():load({ id = ... })
-function KolnerAdressenSDK:address(data)
+-- Idiomatic facade: client:Address():list() / client:Address():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function KolnerAdressenSDK:Address(data)
   local EntityMod = require("entity.address_entity")
   if data == nil then
     if self._address == nil then
@@ -256,15 +257,10 @@ function KolnerAdressenSDK:address(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:address() instead.
-function KolnerAdressenSDK:Address(data)
-  local EntityMod = require("entity.address_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:datastore_search():list() / client:datastore_search():load({ id = ... })
-function KolnerAdressenSDK:datastore_search(data)
+-- Idiomatic facade: client:DatastoreSearch():list() / client:DatastoreSearch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function KolnerAdressenSDK:DatastoreSearch(data)
   local EntityMod = require("entity.datastore_search_entity")
   if data == nil then
     if self._datastore_search == nil then
@@ -272,12 +268,6 @@ function KolnerAdressenSDK:datastore_search(data)
     end
     return self._datastore_search
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:datastore_search() instead.
-function KolnerAdressenSDK:DatastoreSearch(data)
-  local EntityMod = require("entity.datastore_search_entity")
   return EntityMod.new(self, data)
 end
 

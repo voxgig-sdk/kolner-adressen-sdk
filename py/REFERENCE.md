@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AddressEntity
 
 ```python
-address = client.address
+address = client.Address()
 ```
 
 ### Fields
@@ -104,7 +104,9 @@ address = client.address
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.address.list({})
+results = client.Address().list({})
+for address in results:
+    print(address)
 ```
 
 ### Common Methods
@@ -139,7 +141,7 @@ Return the entity name.
 ## DatastoreSearchEntity
 
 ```python
-datastore_search = client.datastore_search
+datastore_search = client.DatastoreSearch()
 ```
 
 ### Fields
@@ -156,7 +158,7 @@ datastore_search = client.datastore_search
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.datastore_search.load({"id": "datastore_search_id"})
+result = client.DatastoreSearch().load({"id": "datastore_search_id"})
 ```
 
 ### Common Methods

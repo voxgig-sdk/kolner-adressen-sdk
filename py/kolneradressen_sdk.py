@@ -220,41 +220,21 @@ class KolnerAdressenSDK:
         }
 
 
-    @property
-    def address(self):
-        """Idiomatic facade: client.address.list() / client.address.load({"id": ...})."""
-        from entity.address_entity import AddressEntity
-        cached = getattr(self, "_address", None)
-        if cached is None:
-            cached = AddressEntity(self, None)
-            self._address = cached
-        return cached
-
-    def Address(self, data=None):
-        # Deprecated: use client.address instead.
+    def Address(self, data=None) -> "AddressEntity":
+        """Entity factory: client.Address().list({}) / client.Address().load({"id": ...})."""
         from entity.address_entity import AddressEntity
         return AddressEntity(self, data)
 
 
-    @property
-    def datastore_search(self):
-        """Idiomatic facade: client.datastore_search.list() / client.datastore_search.load({"id": ...})."""
-        from entity.datastore_search_entity import DatastoreSearchEntity
-        cached = getattr(self, "_datastore_search", None)
-        if cached is None:
-            cached = DatastoreSearchEntity(self, None)
-            self._datastore_search = cached
-        return cached
-
-    def DatastoreSearch(self, data=None):
-        # Deprecated: use client.datastore_search instead.
+    def DatastoreSearch(self, data=None) -> "DatastoreSearchEntity":
+        """Entity factory: client.DatastoreSearch().list({}) / client.DatastoreSearch().load({"id": ...})."""
         from entity.datastore_search_entity import DatastoreSearchEntity
         return DatastoreSearchEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "KolnerAdressenSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class KolnerAdressenSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.address_entity import AddressEntity
+    from entity.datastore_search_entity import DatastoreSearchEntity

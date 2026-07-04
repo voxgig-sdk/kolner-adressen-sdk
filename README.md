@@ -26,9 +26,11 @@ import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen'
 
 const client = new KolnerAdressenSDK()
 
-// List all addresss
-const addresss = await client.address.list()
-console.log(addresss.data)
+// List all addresss (returns Address[])
+const addresss = await client.Address().list()
+for (const address of addresss) {
+  console.log(address)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from kolneradressen_sdk import KolnerAdressenSDK
 
 client = KolnerAdressenSDK()
 
-# List all addresss
-addresss = client.address.list()
-print(addresss)
+# List all addresss (returns a list, raises on error)
+addresss = client.Address().list({})
+for address in addresss:
+    print(address)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'kolneradressen_sdk.php';
 
 $client = new KolnerAdressenSDK();
 
-// List all addresss (throws on error)
-$addresss = $client->address()->list();
+// List all addresss (returns an array; throws on error)
+$addresss = $client->Address()->list();
 print_r($addresss);
 ```
 
@@ -121,8 +124,8 @@ require_relative "KolnerAdressen_sdk"
 
 client = KolnerAdressenSDK.new
 
-# List all addresss
-addresss = client.address.list
+# List all addresss (returns an Array; raises on error)
+addresss = client.Address.list
 puts addresss
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("kolner-adressen_sdk")
 local client = sdk.new()
 
 -- List all addresss
-local addresss, err = client:address():list()
+local addresss, err = client:Address():list()
 print(addresss)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = KolnerAdressenSDK.test()
-const result = await client.address.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const address = await client.Address().load({ id: 'test01' })
+// address is a bare Address populated with mock data
+console.log(address)
 ```
 
 ### Python
 
 ```python
 client = KolnerAdressenSDK.test()
-result = client.address.load({"id": "test01"})
+address = client.Address().load({"id": "test01"})
+print(address)
 ```
 
 ### PHP
 
 ```php
-$client = KolnerAdressenSDK::test();
-$result = $client->address()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = KolnerAdressenSDK::test([
+    "entity" => ["address" => ["test01" => ["id" => "test01"]]],
+]);
+$address = $client->Address()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.Address(nil).Load(
 ### Ruby
 
 ```ruby
-client = KolnerAdressenSDK.test
-result = client.address.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = KolnerAdressenSDK.test({
+  "entity" => { "address" => { "test01" => { "id" => "test01" } } },
+})
+address = client.Address.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:address():load({ id = "test01" })
+local result, err = client:Address():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

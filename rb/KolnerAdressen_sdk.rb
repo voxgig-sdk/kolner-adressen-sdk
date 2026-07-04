@@ -208,26 +208,14 @@ class KolnerAdressenSDK
   end
 
 
-  # Idiomatic facade: client.address.list / client.address.load({ "id" => ... })
-  def address
-    require_relative 'entity/address_entity'
-    @address ||= AddressEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.address instead.
+  # Canonical facade: client.Address.list / client.Address.load({ "id" => ... })
   def Address(data = nil)
     require_relative 'entity/address_entity'
     AddressEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.datastore_search.list / client.datastore_search.load({ "id" => ... })
-  def datastore_search
-    require_relative 'entity/datastore_search_entity'
-    @datastore_search ||= DatastoreSearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.datastore_search instead.
+  # Canonical facade: client.DatastoreSearch.list / client.DatastoreSearch.load({ "id" => ... })
   def DatastoreSearch(data = nil)
     require_relative 'entity/datastore_search_entity'
     DatastoreSearchEntity.new(self, data)

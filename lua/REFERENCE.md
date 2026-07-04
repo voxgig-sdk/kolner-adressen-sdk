@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## AddressEntity
 
 ```lua
-local address = client:address(nil)
+local address = client:Address(nil)
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ local address = client:address(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:address():list()
+local results, err = client:Address():list()
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## DatastoreSearchEntity
 
 ```lua
-local datastore_search = client:datastore_search(nil)
+local datastore_search = client:DatastoreSearch(nil)
 ```
 
 ### Fields
@@ -160,7 +160,7 @@ local datastore_search = client:datastore_search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:datastore_search():load({ id = "datastore_search_id" })
+local result, err = client:DatastoreSearch():load({ id = "datastore_search_id" })
 ```
 
 ### Common Methods

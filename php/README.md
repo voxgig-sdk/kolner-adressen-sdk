@@ -29,18 +29,16 @@ require_once 'kolneradressen_sdk.php';
 $client = new KolnerAdressenSDK();
 ```
 
-### 2. List addresss
+### 2. List address records
 
 ```php
 try {
-    $result = $client->address()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Address records — iterate directly.
+    $addresss = $client->Address()->list();
+    foreach ($addresss as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = KolnerAdressenSDK::test();
+$client = KolnerAdressenSDK::test([
+    "entity" => ["address" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->address()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$address = $client->Address()->load(["id" => "test01"]);
+print_r($address);
 ```
 
 ### Use a custom fetch function
@@ -171,7 +173,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Address` | `($data): AddressEntity` | Create a Address entity instance. |
+| `Address` | `($data): AddressEntity` | Create an Address entity instance. |
 | `DatastoreSearch` | `($data): DatastoreSearchEntity` | Create a DatastoreSearch entity instance. |
 
 ### Entity interface
@@ -244,7 +246,7 @@ API path: `/api/3/action/datastore_search`
 
 ### Address
 
-Create an instance: `const address = client.address`
+Create an instance: `$address = $client->Address();`
 
 #### Operations
 
@@ -264,14 +266,15 @@ Create an instance: `const address = client.address`
 
 #### Example: List
 
-```ts
-const addresss = await client.address.list()
+```php
+// list() returns an array of Address records (throws on error).
+$addresss = $client->Address()->list();
 ```
 
 
 ### DatastoreSearch
 
-Create an instance: `const datastore_search = client.datastore_search`
+Create an instance: `$datastore_search = $client->DatastoreSearch();`
 
 #### Operations
 
@@ -288,8 +291,9 @@ Create an instance: `const datastore_search = client.datastore_search`
 
 #### Example: Load
 
-```ts
-const datastore_search = await client.datastore_search.load({ id: 'datastore_search_id' })
+```php
+// load() returns the bare DatastoreSearch record (throws on error).
+$datastore_search = $client->DatastoreSearch()->load(["id" => "datastore_search_id"]);
 ```
 
 
@@ -364,7 +368,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$address = $client->address();
+$address = $client->Address();
 $address->load(["id" => "example_id"]);
 
 // $address->dataGet() now returns the loaded address data

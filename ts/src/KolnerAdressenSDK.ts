@@ -205,28 +205,14 @@ class KolnerAdressenSDK {
 
 
 
-  _address?: AddressEntity
-
-  // Idiomatic facade: `client.address.list()` / `client.address.load({ id })`.
-  get address(): AddressEntity {
-    return (this._address ??= new AddressEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.address` instead. */
+  // Entity access: `client.Address().list()` / `client.Address().load({ id })`.
   Address(data?: any) {
     const self = this
     return new AddressEntity(self,data)
   }
 
 
-  _datastore_search?: DatastoreSearchEntity
-
-  // Idiomatic facade: `client.datastore_search.list()` / `client.datastore_search.load({ id })`.
-  get datastore_search(): DatastoreSearchEntity {
-    return (this._datastore_search ??= new DatastoreSearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.datastore_search` instead. */
+  // Entity access: `client.DatastoreSearch().list()` / `client.DatastoreSearch().load({ id })`.
   DatastoreSearch(data?: any) {
     const self = this
     return new DatastoreSearchEntity(self,data)

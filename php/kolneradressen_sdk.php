@@ -233,10 +233,10 @@ class KolnerAdressenSDK
 
     private $_address = null;
 
-    // Idiomatic facade: $client->address()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Address() (PHP method
-    // names are case-insensitive).
-    public function address($data = null)
+    // Canonical facade: $client->Address()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->address()
+    // resolves here too.
+    public function Address($data = null)
     {
         require_once __DIR__ . '/entity/address_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class KolnerAdressenSDK
 
     private $_datastore_search = null;
 
-    // Idiomatic facade: $client->datastore_search()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias DatastoreSearch() (PHP method
-    // names are case-insensitive).
-    public function datastore_search($data = null)
+    // Canonical facade: $client->DatastoreSearch()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->datastore_search()
+    // resolves here too.
+    public function DatastoreSearch($data = null)
     {
         require_once __DIR__ . '/entity/datastore_search_entity.php';
         if ($data === null) {
