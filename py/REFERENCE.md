@@ -8,7 +8,7 @@ Complete API reference for the KolnerAdressen Python SDK.
 ### Constructor
 
 ```python
-from kolner-adressen_sdk import KolnerAdressenSDK
+from kolneradressen_sdk import KolnerAdressenSDK
 
 client = KolnerAdressenSDK(options)
 ```
@@ -91,20 +91,20 @@ address = client.Address()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `format` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `format` | `str` | No |  |
+| `id` | `str` | No |  |
+| `name` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Address().list({})
+results = client.Address().list()
 for address in results:
     print(address)
 ```
@@ -148,8 +148,8 @@ datastore_search = client.DatastoreSearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `result` | `dict` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -158,7 +158,7 @@ datastore_search = client.DatastoreSearch()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.DatastoreSearch().load({"id": "datastore_search_id"})
+result = client.DatastoreSearch().load()
 ```
 
 ### Common Methods

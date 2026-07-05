@@ -221,13 +221,13 @@ class KolnerAdressenSDK:
 
 
     def Address(self, data=None) -> "AddressEntity":
-        """Entity factory: client.Address().list({}) / client.Address().load({"id": ...})."""
+        """Entity factory: client.Address().list() / client.Address().load({"id": ...})."""
         from entity.address_entity import AddressEntity
         return AddressEntity(self, data)
 
 
     def DatastoreSearch(self, data=None) -> "DatastoreSearchEntity":
-        """Entity factory: client.DatastoreSearch().list({}) / client.DatastoreSearch().load({"id": ...})."""
+        """Entity factory: client.DatastoreSearch().list() / client.DatastoreSearch().load({"id": ...})."""
         from entity.datastore_search_entity import DatastoreSearchEntity
         return DatastoreSearchEntity(self, data)
 

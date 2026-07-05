@@ -101,11 +101,11 @@ address := client.Address(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `format` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `format` | `string` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -151,8 +151,8 @@ datastore_search := client.DatastoreSearch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `result` | `map[string]any` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -161,7 +161,7 @@ datastore_search := client.DatastoreSearch(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.DatastoreSearch(nil).Load(map[string]any{"id": "datastore_search_id"}, nil)
+result, err := client.DatastoreSearch(nil).Load(nil, nil)
 ```
 
 ### Common Methods

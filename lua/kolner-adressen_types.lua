@@ -14,12 +14,19 @@
 ---@field url? string
 
 ---@class AddressListMatch
+---@field description? string
+---@field format? string
+---@field id? string
+---@field name? string
+---@field url? string
 
 ---@class DatastoreSearch
 ---@field result? table
 ---@field success? boolean
 
 ---@class DatastoreSearchLoadMatch
+---@field result? table
+---@field success? boolean
 
 local M = {}
 

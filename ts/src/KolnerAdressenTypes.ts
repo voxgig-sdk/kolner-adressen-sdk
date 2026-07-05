@@ -13,12 +13,21 @@ export interface Address {
   url?: string
 }
 
-export type AddressListMatch = Partial<Address>
+export interface AddressListMatch {
+  description?: string
+  format?: string
+  id?: string
+  name?: string
+  url?: string
+}
 
 export interface DatastoreSearch {
   result?: Record<string, any>
   success?: boolean
 }
 
-export type DatastoreSearchLoadMatch = Partial<DatastoreSearch>
+export interface DatastoreSearchLoadMatch {
+  result?: Record<string, any>
+  success?: boolean
+}
 

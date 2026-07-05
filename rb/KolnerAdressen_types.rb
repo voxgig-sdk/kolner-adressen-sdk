@@ -33,7 +33,7 @@ Address = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Address#list (any subset of Address fields).
+# Request payload for Address#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -71,7 +71,7 @@ DatastoreSearch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for DatastoreSearch#load (any subset of DatastoreSearch fields).
+# Request payload for DatastoreSearch#load.
 #
 # @!attribute [rw] result
 #   @return [Hash, nil]

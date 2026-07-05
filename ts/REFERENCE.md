@@ -128,11 +128,11 @@ const address = client.Address()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `format` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `format` | `string` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -182,8 +182,8 @@ const datastore_search = client.DatastoreSearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `result` | `Record<string, any>` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
@@ -192,7 +192,7 @@ const datastore_search = client.DatastoreSearch()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DatastoreSearch().load({ id: 'datastore_search_id' })
+const result = await client.DatastoreSearch().load()
 ```
 
 ### Common Methods

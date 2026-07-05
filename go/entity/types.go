@@ -17,8 +17,7 @@ type Address struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// AddressListMatch mirrors the address fields as an all-optional match
-// filter (Go analog of Partial<Address>).
+// AddressListMatch is the typed request payload for Address.ListTyped.
 type AddressListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Format *string `json:"format,omitempty"`
@@ -33,8 +32,7 @@ type DatastoreSearch struct {
 	Success *bool `json:"success,omitempty"`
 }
 
-// DatastoreSearchLoadMatch mirrors the datastore_search fields as an all-optional match
-// filter (Go analog of Partial<DatastoreSearch>).
+// DatastoreSearchLoadMatch is the typed request payload for DatastoreSearch.LoadTyped.
 type DatastoreSearchLoadMatch struct {
 	Result *map[string]any `json:"result,omitempty"`
 	Success *bool `json:"success,omitempty"`

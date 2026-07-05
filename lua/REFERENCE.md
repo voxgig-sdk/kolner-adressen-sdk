@@ -94,11 +94,11 @@ local address = client:Address(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `format` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `format` | `string` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -150,8 +150,8 @@ local datastore_search = client:DatastoreSearch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `result` | `table` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ local datastore_search = client:DatastoreSearch(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DatastoreSearch():load({ id = "datastore_search_id" })
+local result, err = client:DatastoreSearch():load()
 ```
 
 ### Common Methods

@@ -22,7 +22,7 @@ class Address
     public ?string $url = null;
 }
 
-/** Match filter for Address#list (any subset of Address fields). */
+/** Request payload for Address#list. */
 class AddressListMatch
 {
     public ?string $description = null;
@@ -39,7 +39,7 @@ class DatastoreSearch
     public ?bool $success = null;
 }
 
-/** Match filter for DatastoreSearch#load (any subset of DatastoreSearch fields). */
+/** Request payload for DatastoreSearch#load. */
 class DatastoreSearchLoadMatch
 {
     public ?array $result = null;
