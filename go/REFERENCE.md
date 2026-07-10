@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 address := client.Address(nil)
+fmt.Println(address.GetName()) // "address"
 ```
 
 ### Fields
@@ -115,6 +116,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Address(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -144,7 +149,8 @@ Return the entity name.
 ## DatastoreSearchEntity
 
 ```go
-datastore_search := client.DatastoreSearch(nil)
+datastoreSearch := client.DatastoreSearch(nil)
+fmt.Println(datastoreSearch.GetName()) // "datastore_search"
 ```
 
 ### Fields
@@ -162,6 +168,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.DatastoreSearch(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

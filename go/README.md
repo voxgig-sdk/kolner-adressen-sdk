@@ -322,7 +322,7 @@ fmt.Println(addresss) // the array of records
 
 ### DatastoreSearch
 
-Create an instance: `datastore_search := client.DatastoreSearch(nil)`
+Create an instance: `datastoreSearch := client.DatastoreSearch(nil)`
 
 #### Operations
 
@@ -340,11 +340,11 @@ Create an instance: `datastore_search := client.DatastoreSearch(nil)`
 #### Example: Load
 
 ```go
-datastore_search, err := client.DatastoreSearch(nil).Load(nil, nil)
+datastoreSearch, err := client.DatastoreSearch(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(datastore_search) // the loaded record
+fmt.Println(datastoreSearch) // the loaded record
 ```
 
 

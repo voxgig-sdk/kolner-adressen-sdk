@@ -20,10 +20,10 @@ main: {
           url: "https://offenedaten-koeln.de"
         }
       ]
+      summary: "This API provides access to a dataset containing addresses within the city of Cologne."
       title: "Kölner Adressen API"
       version: "1.0.0"
+      website: "https://offenedaten-koeln.de"
       "x-documentation": "https://offenedaten-koeln.de/dataset/adressen-k%C3%B6ln"
     }
   }
-}
-

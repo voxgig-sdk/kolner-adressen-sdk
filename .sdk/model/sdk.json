@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -382,14 +379,17 @@
           "name": "Datenlizenz Deutschland – Zero – Version 2.0",
           "url": "https://www.govdata.de/dl-de/zero-2-0"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Offene Daten Köln Production Server",
             "url": "https://offenedaten-koeln.de"
           }
         ],
+        "summary": "This API provides access to a dataset containing addresses within the city of Cologne.",
         "title": "Kölner Adressen API",
         "version": "1.0.0",
+        "website": "https://offenedaten-koeln.de",
         "x-documentation": "https://offenedaten-koeln.de/dataset/adressen-k%C3%B6ln"
       },
       "option": {},
@@ -443,6 +443,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -493,6 +496,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
