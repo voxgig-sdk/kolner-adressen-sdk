@@ -21,12 +21,16 @@
 ---@field url? string
 
 ---@class DatastoreSearch
----@field result? table
----@field success? boolean
+---@field limit? number
+---@field offset? number
+---@field records? table
+---@field total? number
 
 ---@class DatastoreSearchLoadMatch
----@field result? table
----@field success? boolean
+---@field limit? number
+---@field offset? number
+---@field records? table
+---@field total? number
 
 local M = {}
 

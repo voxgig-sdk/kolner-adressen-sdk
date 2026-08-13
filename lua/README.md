@@ -221,9 +221,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local address, err = client:Address():load()
+    local datastore_search, err = client:DatastoreSearch():load()
     if err then error(err) end
-    -- address is the loaded record
+    -- datastore_search is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -248,8 +248,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `result` |  |
-| `success` |  |
+| `limit` |  |
+| `offset` |  |
+| `records` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -301,8 +303,10 @@ Create an instance: `local datastore_search = client:DatastoreSearch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `result` | `table` |  |
-| `success` | `boolean` |  |
+| `limit` | `number` |  |
+| `offset` | `number` |  |
+| `records` | `table` |  |
+| `total` | `number` |  |
 
 #### Example: Load
 

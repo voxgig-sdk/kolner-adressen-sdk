@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from kolneradressen_sdk.utility.voxgig_struct import voxgig_struct as vs
 from kolneradressen_sdk import KolnerAdressenSDK
-from core import helpers
+from kolneradressen_sdk.core import helpers
 from test import runner
 
 
@@ -61,11 +61,11 @@ def _datastore_search_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "KOLNERADRESSEN_TEST_DATASTORE_SEARCH_ENTID": {},
-        "KOLNERADRESSEN_TEST_LIVE": "FALSE",
+        "KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID": {},
+        "KOLNER_ADRESSEN_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("KOLNERADRESSEN_TEST_LIVE") == "TRUE"
+    live = env.get("KOLNER_ADRESSEN_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

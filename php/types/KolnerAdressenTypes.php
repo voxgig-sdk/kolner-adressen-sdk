@@ -35,14 +35,18 @@ class AddressListMatch
 /** DatastoreSearch entity data model. */
 class DatastoreSearch
 {
-    public ?array $result = null;
-    public ?bool $success = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?array $records = null;
+    public ?int $total = null;
 }
 
 /** Request payload for DatastoreSearch#load. */
 class DatastoreSearchLoadMatch
 {
-    public ?array $result = null;
-    public ?bool $success = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?array $records = null;
+    public ?int $total = null;
 }
 

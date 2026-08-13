@@ -60,27 +60,43 @@ AddressListMatch = Struct.new(
 
 # DatastoreSearch entity data model.
 #
-# @!attribute [rw] result
-#   @return [Hash, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] records
+#   @return [Array, nil]
+#
+# @!attribute [rw] total
+#   @return [Integer, nil]
 DatastoreSearch = Struct.new(
-  :result,
-  :success,
+  :limit,
+  :offset,
+  :records,
+  :total,
   keyword_init: true
 )
 
 # Request payload for DatastoreSearch#load.
 #
-# @!attribute [rw] result
-#   @return [Hash, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
+#
+# @!attribute [rw] records
+#   @return [Array, nil]
+#
+# @!attribute [rw] total
+#   @return [Integer, nil]
 DatastoreSearchLoadMatch = Struct.new(
-  :result,
-  :success,
+  :limit,
+  :offset,
+  :records,
+  :total,
   keyword_init: true
 )
 

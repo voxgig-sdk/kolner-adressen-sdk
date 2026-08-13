@@ -148,8 +148,10 @@ datastore_search = client.DatastoreSearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | `dict` | No |  |
-| `success` | `bool` | No |  |
+| `limit` | `int` | No |  |
+| `offset` | `int` | No |  |
+| `records` | `list` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 

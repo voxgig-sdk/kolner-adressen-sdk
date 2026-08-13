@@ -82,6 +82,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/dataset/adressen-k%C3%B6ln",
 								"parts": []any{
@@ -95,12 +96,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.resources`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -111,17 +111,31 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "limit",
 						"req": false,
-						"type": "`$OBJECT`",
+						"type": "`$INTEGER`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "success",
+						"name": "offset",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$INTEGER`",
 						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "records",
+						"req": false,
+						"type": "`$ARRAY`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
+						"name": "total",
+						"req": false,
+						"type": "`$INTEGER`",
+						"index$": 3,
 					},
 				},
 				"name": "datastore_search",
@@ -187,6 +201,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/3/action/datastore_search",
 								"parts": []any{
@@ -207,12 +222,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.result`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

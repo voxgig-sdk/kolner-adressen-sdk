@@ -35,7 +35,9 @@ const client = new KolnerAdressenSDK()
 
 ### 2. List address records
 
-`list()` resolves to an array of Address objects — iterate it directly:
+`list()` resolves to an array of Address ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const addresss = await client.Address().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = KolnerAdressenSDK.test()
 
 const address = await client.Address().list()
-// address is a bare entity populated with mock response data
+// address is the entity, populated with mock response data
+// — call address.data() for the record itself
 console.log(address)
 ```
 
@@ -301,8 +304,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `result` |  |
-| `success` |  |
+| `limit` |  |
+| `offset` |  |
+| `records` |  |
+| `total` |  |
 
 Operations: load.
 
@@ -354,8 +359,10 @@ Create an instance: `const datastore_search = client.DatastoreSearch()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `result` | `Record<string, any>` |  |
-| `success` | `boolean` |  |
+| `limit` | `number` |  |
+| `offset` | `number` |  |
+| `records` | `any[]` |  |
+| `total` | `number` |  |
 
 #### Example: Load
 

@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import KolnerAdressenControl
-from core.error import KolnerAdressenError
-from core.result import KolnerAdressenResult
-from core.spec import KolnerAdressenSpec
+from kolneradressen_sdk.config import make_config
+from kolneradressen_sdk.features import _make_feature
+from kolneradressen_sdk.core.control import KolnerAdressenControl
+from kolneradressen_sdk.core.error import KolnerAdressenError
+from kolneradressen_sdk.core.result import KolnerAdressenResult
+from kolneradressen_sdk.core.spec import KolnerAdressenSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'KolnerAdressen',
   }
 
 
@@ -114,6 +114,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/dataset/adressen-k%C3%B6ln",
               "parts": [
@@ -127,7 +128,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.resources`"
               },
               "index$": 0
             }
@@ -143,17 +144,31 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "result",
+          "name": "limit",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$INTEGER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "success",
+          "name": "offset",
           "req": false,
-          "type": "`$BOOLEAN`",
+          "type": "`$INTEGER`",
           "index$": 1
+        },
+        {
+          "active": true,
+          "name": "records",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 2
+        },
+        {
+          "active": true,
+          "name": "total",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 3
         }
       ],
       "name": "datastore_search",
@@ -219,6 +234,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/3/action/datastore_search",
               "parts": [
@@ -239,7 +255,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.result`"
               },
               "index$": 0
             }

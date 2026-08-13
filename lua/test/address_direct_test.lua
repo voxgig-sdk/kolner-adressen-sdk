@@ -61,11 +61,11 @@ function address_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["KOLNERADRESSEN_TEST_ADDRESS_ENTID"] = {},
-    ["KOLNERADRESSEN_TEST_LIVE"] = "FALSE",
+    ["KOLNER_ADRESSEN_TEST_ADDRESS_ENTID"] = {},
+    ["KOLNER_ADRESSEN_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["KOLNERADRESSEN_TEST_LIVE"] == "TRUE"
+  local live = env["KOLNER_ADRESSEN_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

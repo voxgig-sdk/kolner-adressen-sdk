@@ -150,8 +150,10 @@ local datastore_search = client:DatastoreSearch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | `table` | No |  |
-| `success` | `boolean` | No |  |
+| `limit` | `number` | No |  |
+| `offset` | `number` | No |  |
+| `records` | `table` | No |  |
+| `total` | `number` | No |  |
 
 ### Operations
 

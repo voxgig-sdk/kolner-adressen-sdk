@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = KolnerAdressenSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 address = client.Address().list()
 # address contains the mock response record
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -258,8 +259,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `result` |  |
-| `success` |  |
+| `limit` |  |
+| `offset` |  |
+| `records` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -311,8 +314,10 @@ Create an instance: `datastore_search = client.DatastoreSearch()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `result` | `dict` |  |
-| `success` | `bool` |  |
+| `limit` | `int` |  |
+| `offset` | `int` |  |
+| `records` | `list` |  |
+| `total` | `int` |  |
 
 #### Example: Load
 

@@ -19,11 +19,15 @@ import {
 describe('AddressDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when KOLNERADRESSEN_TEST_LIVE=TRUE.
-  afterEach(liveDelay('KOLNERADRESSEN_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when KOLNER_ADRESSEN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('KOLNER_ADRESSEN_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new KolnerAdressenSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,17 +81,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'KOLNERADRESSEN_TEST_ADDRESS_ENTID': {},
-    'KOLNERADRESSEN_TEST_LIVE': 'FALSE',
+    'KOLNER_ADRESSEN_TEST_ADDRESS_ENTID': {},
+    'KOLNER_ADRESSEN_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.KOLNERADRESSEN_TEST_LIVE
+  const live = 'TRUE' === env.KOLNER_ADRESSEN_TEST_LIVE
 
   if (live) {
     const client = new KolnerAdressenSDK({
     })
 
-    let idmap: any = env['KOLNERADRESSEN_TEST_ADDRESS_ENTID']
+    let idmap: any = env['KOLNER_ADRESSEN_TEST_ADDRESS_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

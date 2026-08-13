@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# KolnerAdressen SDK exists test
 
 import pytest
 from kolneradressen_sdk import KolnerAdressenSDK

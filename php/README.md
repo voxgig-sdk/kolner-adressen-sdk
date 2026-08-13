@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = KolnerAdressenSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $address = $client->Address()->list();
 print_r($address);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -262,8 +263,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `result` |  |
-| `success` |  |
+| `limit` |  |
+| `offset` |  |
+| `records` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -316,13 +319,15 @@ Create an instance: `$datastore_search = $client->DatastoreSearch();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `result` | `array` |  |
-| `success` | `bool` |  |
+| `limit` | `int` |  |
+| `offset` | `int` |  |
+| `records` | `array` |  |
+| `total` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare DatastoreSearch record (throws on error).
+// load() returns the ENTITY — call data_get() for the DatastoreSearch record (throws on error).
 $datastore_search = $client->DatastoreSearch()->load();
 ```
 

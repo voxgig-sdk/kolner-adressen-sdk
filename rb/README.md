@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = KolnerAdressenSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 address = client.Address.list()
 puts address
 ```
@@ -252,8 +253,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `result` |  |
-| `success` |  |
+| `limit` |  |
+| `offset` |  |
+| `records` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -306,13 +309,15 @@ Create an instance: `datastore_search = client.DatastoreSearch`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `result` | `Hash` |  |
-| `success` | `Boolean` |  |
+| `limit` | `Integer` |  |
+| `offset` | `Integer` |  |
+| `records` | `Array` |  |
+| `total` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare DatastoreSearch record (raises on error).
+# load returns the ENTITY — call data_get for the DatastoreSearch record (raises on error).
 datastore_search = client.DatastoreSearch.load()
 ```
 

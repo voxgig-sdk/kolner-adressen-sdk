@@ -6,14 +6,24 @@ main: kit: entity: datastore_search: {
 
   fields: [
     {
-      name: "result"
+      name: "limit"
       req: false
-      type: "`$OBJECT`"
+      type: "`$INTEGER`"
     }
     {
-      name: "success"
+      name: "offset"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "records"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "total"
+      req: false
+      type: "`$INTEGER`"
     }
   ]
 
@@ -92,7 +102,7 @@ main: kit: entity: datastore_search: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.result`"
           }
         }
       ]

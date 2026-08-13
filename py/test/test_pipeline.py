@@ -16,11 +16,11 @@
 import pytest
 
 from kolneradressen_sdk import KolnerAdressenSDK
-from core.error import KolnerAdressenError
-from core.result import KolnerAdressenResult
-from core.response import KolnerAdressenResponse
-from core.spec import KolnerAdressenSpec
-from feature.base_feature import KolnerAdressenBaseFeature
+from kolneradressen_sdk.core.error import KolnerAdressenError
+from kolneradressen_sdk.core.result import KolnerAdressenResult
+from kolneradressen_sdk.core.response import KolnerAdressenResponse
+from kolneradressen_sdk.core.spec import KolnerAdressenSpec
+from kolneradressen_sdk.feature.base_feature import KolnerAdressenBaseFeature
 
 
 def _client():

@@ -277,8 +277,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `"result"` |  |
-| `"success"` |  |
+| `"limit"` |  |
+| `"offset"` |  |
+| `"records"` |  |
+| `"total"` |  |
 
 Operations: Load.
 
@@ -334,8 +336,10 @@ Create an instance: `datastoreSearch := client.DatastoreSearch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `result` | `map[string]any` |  |
-| `success` | `bool` |  |
+| `limit` | `int` |  |
+| `offset` | `int` |  |
+| `records` | `[]any` |  |
+| `total` | `int` |  |
 
 #### Example: Load
 

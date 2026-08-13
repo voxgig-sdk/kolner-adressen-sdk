@@ -26,8 +26,8 @@ import {
 describe('DatastoreSearchEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when KOLNERADRESSEN_TEST_LIVE=TRUE.
-  afterEach(liveDelay('KOLNERADRESSEN_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when KOLNER_ADRESSEN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('KOLNER_ADRESSEN_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = KolnerAdressenSDK.test()
@@ -62,7 +62,7 @@ describe('DatastoreSearchEntity', async () => {
     // LOAD
     const datastore_search_ref01_ent = client.DatastoreSearch()
     const datastore_search_ref01_match_dt0: any = {}
-    const datastore_search_ref01_data_dt0 = await datastore_search_ref01_ent.load(datastore_search_ref01_match_dt0)
+    const datastore_search_ref01_data_dt0 = (await datastore_search_ref01_ent.load(datastore_search_ref01_match_dt0)).data()
     assert(null != datastore_search_ref01_data_dt0)
 
 

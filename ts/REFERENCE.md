@@ -182,8 +182,10 @@ const datastore_search = client.DatastoreSearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | `Record<string, any>` | No |  |
-| `success` | `boolean` | No |  |
+| `limit` | `number` | No |  |
+| `offset` | `number` | No |  |
+| `records` | `any[]` | No |  |
+| `total` | `number` | No |  |
 
 ### Operations
 

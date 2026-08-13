@@ -152,8 +152,10 @@ $datastore_search = $client->DatastoreSearch();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | `array` | No |  |
-| `success` | `bool` | No |  |
+| `limit` | `int` | No |  |
+| `offset` | `int` | No |  |
+| `records` | `array` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 

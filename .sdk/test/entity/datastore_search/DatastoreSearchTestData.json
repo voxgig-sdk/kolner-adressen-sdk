@@ -2,18 +2,24 @@
   "existing": {
     "datastore_search": {
       "DATASTORE_SEARCH00": {
-        "result": {},
-        "success": false,
+        "limit": "s28",
+        "offset": "s29",
+        "records": [],
+        "total": "s2b",
         "id": "DATASTORE_SEARCH00"
       },
       "DATASTORE_SEARCH01": {
-        "result": {},
-        "success": false,
+        "limit": "s50",
+        "offset": "s51",
+        "records": [],
+        "total": "s53",
         "id": "DATASTORE_SEARCH01"
       },
       "DATASTORE_SEARCH02": {
-        "result": {},
-        "success": false,
+        "limit": "s78",
+        "offset": "s79",
+        "records": [],
+        "total": "s7b",
         "id": "DATASTORE_SEARCH02"
       }
     }
@@ -21,8 +27,10 @@
   "new": {
     "datastore_search": {
       "datastore_search_ref01": {
-        "result": {},
-        "success": false
+        "limit": "sa0",
+        "offset": "sa1",
+        "records": [],
+        "total": "sa3"
       }
     }
   }

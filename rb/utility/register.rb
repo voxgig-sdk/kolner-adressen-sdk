@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ KolnerAdressenUtility.registrar = ->(u) {
   u.prepare_params = KolnerAdressenUtilities::PrepareParams
   u.prepare_path = KolnerAdressenUtilities::PreparePath
   u.prepare_query = KolnerAdressenUtilities::PrepareQuery
+  u.graphql_body = KolnerAdressenUtilities::GraphqlBody
+  u.graphql_errors = KolnerAdressenUtilities::GraphqlErrors
   u.result_basic = KolnerAdressenUtilities::ResultBasic
   u.result_body = KolnerAdressenUtilities::ResultBody
   u.result_headers = KolnerAdressenUtilities::ResultHeaders

@@ -157,8 +157,10 @@ fmt.Println(datastoreSearch.GetName()) // "datastore_search"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | `map[string]any` | No |  |
-| `success` | `bool` | No |  |
+| `limit` | `int` | No |  |
+| `offset` | `int` | No |  |
+| `records` | `[]any` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 

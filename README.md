@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = KolnerAdressenSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = KolnerAdressenSDK.test({
+  entity: {
+    address: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const addresss = await client.Address().list()
-// addresss is an array of bare Address records populated with mock data
+// addresss is an array of Address entities, populated with mock data
+// — call addresss[0].data() for the record itself
 console.log(addresss)
 ```
 
@@ -110,7 +119,7 @@ import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen'
 
 const client = new KolnerAdressenSDK()
 
-// List all addresss (returns Address[])
+// List all addresss (returns AddressEntity[] — .data() for the record)
 const addresss = await client.Address().list()
 for (const address of addresss) {
   console.log(address)
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://offenedaten-koeln.de](https://offenedaten-koeln.de)
 

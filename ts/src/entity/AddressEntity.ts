@@ -37,7 +37,7 @@ class AddressEntity extends KolnerAdressenEntityBase<Address> {
 
 
 
-  async list(this: any, reqmatch?: AddressListMatch, ctrl?: Control): Promise<Address[]> {
+  async list(this: any, reqmatch?: AddressListMatch, ctrl?: Control): Promise<AddressEntity[]> {
 
     const utility = this._utility
 

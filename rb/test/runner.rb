@@ -23,8 +23,8 @@ module KolnerAdressenTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("KOLNERADRESSEN_TEST_LIVE")
-    override = getenv("KOLNERADRESSEN_TEST_OVERRIDE")
+    live = getenv("KOLNER_ADRESSEN_TEST_LIVE")
+    override = getenv("KOLNER_ADRESSEN_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module KolnerAdressenTestRunner
       end
     end
 
-    explain = getenv("KOLNERADRESSEN_TEST_EXPLAIN")
-    m["KOLNERADRESSEN_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("KOLNER_ADRESSEN_TEST_EXPLAIN")
+    m["KOLNER_ADRESSEN_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

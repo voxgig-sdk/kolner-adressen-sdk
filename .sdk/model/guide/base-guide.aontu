@@ -8,12 +8,14 @@ guide: {
   entity: address: {
     path: "/dataset/adressen-k%C3%B6ln": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.resources`")|top
     }
   }
 
   entity: datastore_search: {
     path: "/api/3/action/datastore_search": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.result`")|top
     }
   }
 

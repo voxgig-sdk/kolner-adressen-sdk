@@ -26,8 +26,8 @@ import {
 describe('AddressEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when KOLNERADRESSEN_TEST_LIVE=TRUE.
-  afterEach(liveDelay('KOLNERADRESSEN_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when KOLNER_ADRESSEN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('KOLNER_ADRESSEN_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = KolnerAdressenSDK.test()
@@ -63,7 +63,7 @@ describe('AddressEntity', async () => {
     const address_ref01_ent = client.Address()
     const address_ref01_match: any = {}
 
-    const address_ref01_list = await address_ref01_ent.list(address_ref01_match)
+    const address_ref01_list = (await address_ref01_ent.list(address_ref01_match)).map((e: any) => e.data())
 
 
   })

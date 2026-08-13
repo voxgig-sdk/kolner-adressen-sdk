@@ -22,12 +22,16 @@ export interface AddressListMatch {
 }
 
 export interface DatastoreSearch {
-  result?: Record<string, any>
-  success?: boolean
+  limit?: number
+  offset?: number
+  records?: any[]
+  total?: number
 }
 
 export interface DatastoreSearchLoadMatch {
-  result?: Record<string, any>
-  success?: boolean
+  limit?: number
+  offset?: number
+  records?: any[]
+  total?: number
 }
 

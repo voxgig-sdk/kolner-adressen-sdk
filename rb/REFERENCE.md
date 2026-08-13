@@ -153,8 +153,10 @@ datastore_search = client.DatastoreSearch
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `result` | `Hash` | No |  |
-| `success` | `Boolean` | No |  |
+| `limit` | `Integer` | No |  |
+| `offset` | `Integer` | No |  |
+| `records` | `Array` | No |  |
+| `total` | `Integer` | No |  |
 
 ### Operations
 
