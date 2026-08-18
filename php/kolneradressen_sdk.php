@@ -40,7 +40,7 @@ class KolnerAdressenSDK
         $utility = new KolnerAdressenUtility();
         $this->_utility = $utility;
 
-        $config = KolnerAdressenConfig::make_config();
+        $config = KolnerAdressenConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

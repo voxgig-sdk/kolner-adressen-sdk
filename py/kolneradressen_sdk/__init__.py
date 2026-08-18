@@ -23,8 +23,8 @@ class KolnerAdressenSDK:
         utility = KolnerAdressenUtility()
         self._utility = utility
 
-        from kolneradressen_sdk.config import make_config
-        config = make_config()
+        from kolneradressen_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

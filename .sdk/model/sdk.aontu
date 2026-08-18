@@ -7,7 +7,7 @@
 # SDK Details.
 name: 'kolner-adressen'
 origin: 'voxgig-sdk'
-def: 'kölner-adressen_0.1.0.json'
+def: 'kolner-adressen_0.1.0.json'
 
 
 # API Information

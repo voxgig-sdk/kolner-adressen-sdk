@@ -28,7 +28,7 @@ class KolnerAdressenSDK
     utility = KolnerAdressenUtility.new
     @_utility = utility
 
-    config = KolnerAdressenConfig.make_config
+    config = KolnerAdressenConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
