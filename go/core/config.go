@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "KolnerAdressen",
+			"slug": "kolner-adressen",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,22 +37,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Resource description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "format",
+						"short": "Data format",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Resource identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Resource name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
+						"short": "Resource download or access URL",
 						"type": "`$STRING`",
 					},
 				},
@@ -99,18 +107,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "limit",
+						"short": "Number of records returned per page",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "offset",
+						"short": "Current offset for pagination",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "records",
+						"short": "Array of address records",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "total",
+						"short": "Total number of records matching the query",
 						"type": "`$INTEGER`",
 					},
 				},

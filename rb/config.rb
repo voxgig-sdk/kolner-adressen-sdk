@@ -19,6 +19,9 @@ module KolnerAdressenConfig
     {
       "main" => {
         "name" => "KolnerAdressen",
+        "slug" => "kolner-adressen",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -42,22 +45,27 @@ module KolnerAdressenConfig
           "fields" => [
             {
               "name" => "description",
+              "short" => "Resource description",
               "type" => "`$STRING`",
             },
             {
               "name" => "format",
+              "short" => "Data format",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Resource identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "short" => "Resource name",
               "type" => "`$STRING`",
             },
             {
               "name" => "url",
+              "short" => "Resource download or access URL",
               "type" => "`$STRING`",
             },
           ],
@@ -107,18 +115,22 @@ module KolnerAdressenConfig
           "fields" => [
             {
               "name" => "limit",
+              "short" => "Number of records returned per page",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "offset",
+              "short" => "Current offset for pagination",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "records",
+              "short" => "Array of address records",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "total",
+              "short" => "Total number of records matching the query",
               "type" => "`$INTEGER`",
             },
           ],

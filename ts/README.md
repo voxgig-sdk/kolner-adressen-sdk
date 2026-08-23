@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -290,11 +290,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `format` |  |
-| `id` |  |
-| `name` |  |
-| `url` |  |
+| `description` | Resource description |
+| `format` | Data format |
+| `id` | Resource identifier |
+| `name` | Resource name |
+| `url` | Resource download or access URL |
 
 Operations: list.
 
@@ -304,10 +304,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `limit` |  |
-| `offset` |  |
-| `records` |  |
-| `total` |  |
+| `limit` | Number of records returned per page |
+| `offset` | Current offset for pagination |
+| `records` | Array of address records |
+| `total` | Total number of records matching the query |
 
 Operations: load.
 
@@ -332,11 +332,11 @@ Create an instance: `const address = client.Address()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `format` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `description` | `string` | Resource description |
+| `format` | `string` | Data format |
+| `id` | `string` | Resource identifier |
+| `name` | `string` | Resource name |
+| `url` | `string` | Resource download or access URL |
 
 #### Example: List
 
@@ -359,10 +359,10 @@ Create an instance: `const datastore_search = client.DatastoreSearch()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `limit` | `number` |  |
-| `offset` | `number` |  |
-| `records` | `any[]` |  |
-| `total` | `number` |  |
+| `limit` | `number` | Number of records returned per page |
+| `offset` | `number` | Current offset for pagination |
+| `records` | `any[]` | Array of address records |
+| `total` | `number` | Total number of records matching the query |
 
 #### Example: Load
 

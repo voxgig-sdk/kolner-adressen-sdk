@@ -249,11 +249,11 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `format` |  |
-| `id` |  |
-| `name` |  |
-| `url` |  |
+| `description` | Resource description |
+| `format` | Data format |
+| `id` | Resource identifier |
+| `name` | Resource name |
+| `url` | Resource download or access URL |
 
 Operations: List.
 
@@ -263,10 +263,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `limit` |  |
-| `offset` |  |
-| `records` |  |
-| `total` |  |
+| `limit` | Number of records returned per page |
+| `offset` | Current offset for pagination |
+| `records` | Array of address records |
+| `total` | Total number of records matching the query |
 
 Operations: Load.
 
@@ -291,11 +291,11 @@ Create an instance: `$address = $client->Address();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `format` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `description` | `string` | Resource description |
+| `format` | `string` | Data format |
+| `id` | `string` | Resource identifier |
+| `name` | `string` | Resource name |
+| `url` | `string` | Resource download or access URL |
 
 #### Example: List
 
@@ -319,10 +319,10 @@ Create an instance: `$datastore_search = $client->DatastoreSearch();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `limit` | `int` |  |
-| `offset` | `int` |  |
-| `records` | `array` |  |
-| `total` | `int` |  |
+| `limit` | `int` | Number of records returned per page |
+| `offset` | `int` | Current offset for pagination |
+| `records` | `array` | Array of address records |
+| `total` | `int` | Total number of records matching the query |
 
 #### Example: Load
 

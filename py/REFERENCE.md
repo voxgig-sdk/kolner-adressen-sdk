@@ -91,11 +91,11 @@ address = client.Address()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `format` | `str` | No |  |
-| `id` | `str` | No |  |
-| `name` | `str` | No |  |
-| `url` | `str` | No |  |
+| `description` | `str` | No | Resource description |
+| `format` | `str` | No | Data format |
+| `id` | `str` | No | Resource identifier |
+| `name` | `str` | No | Resource name |
+| `url` | `str` | No | Resource download or access URL |
 
 ### Operations
 
@@ -148,10 +148,10 @@ datastore_search = client.DatastoreSearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `limit` | `int` | No |  |
-| `offset` | `int` | No |  |
-| `records` | `list` | No |  |
-| `total` | `int` | No |  |
+| `limit` | `int` | No | Number of records returned per page |
+| `offset` | `int` | No | Current offset for pagination |
+| `records` | `list` | No | Array of address records |
+| `total` | `int` | No | Total number of records matching the query |
 
 ### Operations
 

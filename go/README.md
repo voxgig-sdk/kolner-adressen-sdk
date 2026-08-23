@@ -6,7 +6,7 @@ The Golang SDK for the KolnerAdressen API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Address(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,11 +263,11 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"description"` |  |
-| `"format"` |  |
-| `"id"` |  |
-| `"name"` |  |
-| `"url"` |  |
+| `"description"` | Resource description |
+| `"format"` | Data format |
+| `"id"` | Resource identifier |
+| `"name"` | Resource name |
+| `"url"` | Resource download or access URL |
 
 Operations: List.
 
@@ -277,10 +277,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `"limit"` |  |
-| `"offset"` |  |
-| `"records"` |  |
-| `"total"` |  |
+| `"limit"` | Number of records returned per page |
+| `"offset"` | Current offset for pagination |
+| `"records"` | Array of address records |
+| `"total"` | Total number of records matching the query |
 
 Operations: Load.
 
@@ -305,11 +305,11 @@ Create an instance: `address := client.Address(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `format` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `description` | `string` | Resource description |
+| `format` | `string` | Data format |
+| `id` | `string` | Resource identifier |
+| `name` | `string` | Resource name |
+| `url` | `string` | Resource download or access URL |
 
 #### Example: List
 
@@ -336,10 +336,10 @@ Create an instance: `datastoreSearch := client.DatastoreSearch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `limit` | `int` |  |
-| `offset` | `int` |  |
-| `records` | `[]any` |  |
-| `total` | `int` |  |
+| `limit` | `int` | Number of records returned per page |
+| `offset` | `int` | Current offset for pagination |
+| `records` | `[]any` | Array of address records |
+| `total` | `int` | Total number of records matching the query |
 
 #### Example: Load
 

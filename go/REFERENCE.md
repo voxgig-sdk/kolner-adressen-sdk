@@ -102,11 +102,11 @@ fmt.Println(address.GetName()) // "address"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `format` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `description` | `string` | No | Resource description |
+| `format` | `string` | No | Data format |
+| `id` | `string` | No | Resource identifier |
+| `name` | `string` | No | Resource name |
+| `url` | `string` | No | Resource download or access URL |
 
 ### Operations
 
@@ -157,10 +157,10 @@ fmt.Println(datastoreSearch.GetName()) // "datastore_search"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `limit` | `int` | No |  |
-| `offset` | `int` | No |  |
-| `records` | `[]any` | No |  |
-| `total` | `int` | No |  |
+| `limit` | `int` | No | Number of records returned per page |
+| `offset` | `int` | No | Current offset for pagination |
+| `records` | `[]any` | No | Array of address records |
+| `total` | `int` | No | Total number of records matching the query |
 
 ### Operations
 

@@ -8,21 +8,25 @@ main: kit: entity: datastore_search: {
     {
       name: "limit"
       req: false
+      short: "Number of records returned per page"
       type: "`$INTEGER`"
     }
     {
       name: "offset"
       req: false
+      short: "Current offset for pagination"
       type: "`$INTEGER`"
     }
     {
       name: "records"
       req: false
+      short: "Array of address records"
       type: "`$ARRAY`"
     }
     {
       name: "total"
       req: false
+      short: "Total number of records matching the query"
       type: "`$INTEGER`"
     }
   ]

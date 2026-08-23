@@ -234,11 +234,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `format` |  |
-| `id` |  |
-| `name` |  |
-| `url` |  |
+| `description` | Resource description |
+| `format` | Data format |
+| `id` | Resource identifier |
+| `name` | Resource name |
+| `url` | Resource download or access URL |
 
 Operations: List.
 
@@ -248,10 +248,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `limit` |  |
-| `offset` |  |
-| `records` |  |
-| `total` |  |
+| `limit` | Number of records returned per page |
+| `offset` | Current offset for pagination |
+| `records` | Array of address records |
+| `total` | Total number of records matching the query |
 
 Operations: Load.
 
@@ -276,11 +276,11 @@ Create an instance: `local address = client:Address(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `format` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `url` | `string` |  |
+| `description` | `string` | Resource description |
+| `format` | `string` | Data format |
+| `id` | `string` | Resource identifier |
+| `name` | `string` | Resource name |
+| `url` | `string` | Resource download or access URL |
 
 #### Example: List
 
@@ -303,10 +303,10 @@ Create an instance: `local datastore_search = client:DatastoreSearch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `limit` | `number` |  |
-| `offset` | `number` |  |
-| `records` | `table` |  |
-| `total` | `number` |  |
+| `limit` | `number` | Number of records returned per page |
+| `offset` | `number` | Current offset for pagination |
+| `records` | `table` | Array of address records |
+| `total` | `number` | Total number of records matching the query |
 
 #### Example: Load
 

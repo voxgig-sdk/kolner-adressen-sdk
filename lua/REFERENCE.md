@@ -94,11 +94,11 @@ local address = client:Address(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `format` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `description` | `string` | No | Resource description |
+| `format` | `string` | No | Data format |
+| `id` | `string` | No | Resource identifier |
+| `name` | `string` | No | Resource name |
+| `url` | `string` | No | Resource download or access URL |
 
 ### Operations
 
@@ -150,10 +150,10 @@ local datastore_search = client:DatastoreSearch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `limit` | `number` | No |  |
-| `offset` | `number` | No |  |
-| `records` | `table` | No |  |
-| `total` | `number` | No |  |
+| `limit` | `number` | No | Number of records returned per page |
+| `offset` | `number` | No | Current offset for pagination |
+| `records` | `table` | No | Array of address records |
+| `total` | `number` | No | Total number of records matching the query |
 
 ### Operations
 

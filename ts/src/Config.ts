@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'KolnerAdressen',
+        slug: "kolner-adressen",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,22 +70,27 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Resource description",
           "type": "`$STRING`"
         },
         {
           "name": "format",
+          "short": "Data format",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Resource identifier",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Resource name",
           "type": "`$STRING`"
         },
         {
           "name": "url",
+          "short": "Resource download or access URL",
           "type": "`$STRING`"
         }
       ],
@@ -124,18 +140,22 @@ class Config {
       "fields": [
         {
           "name": "limit",
+          "short": "Number of records returned per page",
           "type": "`$INTEGER`"
         },
         {
           "name": "offset",
+          "short": "Current offset for pagination",
           "type": "`$INTEGER`"
         },
         {
           "name": "records",
+          "short": "Array of address records",
           "type": "`$ARRAY`"
         },
         {
           "name": "total",
+          "short": "Total number of records matching the query",
           "type": "`$INTEGER`"
         }
       ],

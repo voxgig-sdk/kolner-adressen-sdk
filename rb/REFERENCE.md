@@ -97,11 +97,11 @@ address = client.Address
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `format` | `String` | No |  |
-| `id` | `String` | No |  |
-| `name` | `String` | No |  |
-| `url` | `String` | No |  |
+| `description` | `String` | No | Resource description |
+| `format` | `String` | No | Data format |
+| `id` | `String` | No | Resource identifier |
+| `name` | `String` | No | Resource name |
+| `url` | `String` | No | Resource download or access URL |
 
 ### Operations
 
@@ -153,10 +153,10 @@ datastore_search = client.DatastoreSearch
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `limit` | `Integer` | No |  |
-| `offset` | `Integer` | No |  |
-| `records` | `Array` | No |  |
-| `total` | `Integer` | No |  |
+| `limit` | `Integer` | No | Number of records returned per page |
+| `offset` | `Integer` | No | Current offset for pagination |
+| `records` | `Array` | No | Array of address records |
+| `total` | `Integer` | No | Total number of records matching the query |
 
 ### Operations
 

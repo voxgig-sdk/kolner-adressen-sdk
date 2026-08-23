@@ -96,11 +96,11 @@ $address = $client->Address();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `format` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `url` | `string` | No |  |
+| `description` | `string` | No | Resource description |
+| `format` | `string` | No | Data format |
+| `id` | `string` | No | Resource identifier |
+| `name` | `string` | No | Resource name |
+| `url` | `string` | No | Resource download or access URL |
 
 ### Operations
 
@@ -152,10 +152,10 @@ $datastore_search = $client->DatastoreSearch();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `limit` | `int` | No |  |
-| `offset` | `int` | No |  |
-| `records` | `array` | No |  |
-| `total` | `int` | No |  |
+| `limit` | `int` | No | Number of records returned per page |
+| `offset` | `int` | No | Current offset for pagination |
+| `records` | `array` | No | Array of address records |
+| `total` | `int` | No | Total number of records matching the query |
 
 ### Operations
 

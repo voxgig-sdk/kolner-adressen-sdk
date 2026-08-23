@@ -36,30 +36,35 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Resource description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "format",
               "req": false,
+              "short": "Data format",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Resource identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Resource name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "Resource download or access URL",
               "type": "`$STRING`"
             }
           ],
@@ -122,24 +127,28 @@
               "active": true,
               "name": "limit",
               "req": false,
+              "short": "Number of records returned per page",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "offset",
               "req": false,
+              "short": "Current offset for pagination",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "records",
               "req": false,
+              "short": "Array of address records",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total number of records matching the query",
               "type": "`$INTEGER`"
             }
           ],

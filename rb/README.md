@@ -239,11 +239,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `format` |  |
-| `id` |  |
-| `name` |  |
-| `url` |  |
+| `description` | Resource description |
+| `format` | Data format |
+| `id` | Resource identifier |
+| `name` | Resource name |
+| `url` | Resource download or access URL |
 
 Operations: List.
 
@@ -253,10 +253,10 @@ API path: `/dataset/adressen-k%C3%B6ln`
 
 | Field | Description |
 | --- | --- |
-| `limit` |  |
-| `offset` |  |
-| `records` |  |
-| `total` |  |
+| `limit` | Number of records returned per page |
+| `offset` | Current offset for pagination |
+| `records` | Array of address records |
+| `total` | Total number of records matching the query |
 
 Operations: Load.
 
@@ -281,11 +281,11 @@ Create an instance: `address = client.Address`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `format` | `String` |  |
-| `id` | `String` |  |
-| `name` | `String` |  |
-| `url` | `String` |  |
+| `description` | `String` | Resource description |
+| `format` | `String` | Data format |
+| `id` | `String` | Resource identifier |
+| `name` | `String` | Resource name |
+| `url` | `String` | Resource download or access URL |
 
 #### Example: List
 
@@ -309,10 +309,10 @@ Create an instance: `datastore_search = client.DatastoreSearch`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `limit` | `Integer` |  |
-| `offset` | `Integer` |  |
-| `records` | `Array` |  |
-| `total` | `Integer` |  |
+| `limit` | `Integer` | Number of records returned per page |
+| `offset` | `Integer` | Current offset for pagination |
+| `records` | `Array` | Array of address records |
+| `total` | `Integer` | Total number of records matching the query |
 
 #### Example: Load
 
