@@ -28,6 +28,7 @@ module KolnerAdressenConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
