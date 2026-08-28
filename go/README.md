@@ -344,12 +344,35 @@ Create an instance: `datastoreSearch := client.DatastoreSearch(nil)`
 #### Example: Load
 
 ```go
-datastoreSearch, err := client.DatastoreSearch(nil).Load(nil, nil)
+datastoreSearch, err := client.DatastoreSearch(nil).Load(map[string]any{"resource_id": "resource_id"}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(datastoreSearch) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

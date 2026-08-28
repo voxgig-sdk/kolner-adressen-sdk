@@ -14,11 +14,7 @@ export interface Address {
 }
 
 export interface AddressListMatch {
-  description?: string
   format?: string
-  id?: string
-  name?: string
-  url?: string
 }
 
 export interface DatastoreSearch {
@@ -29,9 +25,11 @@ export interface DatastoreSearch {
 }
 
 export interface DatastoreSearchLoadMatch {
+  field?: string
+  filter?: string
   limit?: number
   offset?: number
-  records?: any[]
-  total?: number
+  q?: string
+  resource_id: string
 }
 

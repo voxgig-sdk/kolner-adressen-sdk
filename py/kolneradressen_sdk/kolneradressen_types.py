@@ -25,11 +25,7 @@ class Address(TypedDict, total=False):
 
 
 class AddressListMatch(TypedDict, total=False):
-    description: str
     format: str
-    id: str
-    name: str
-    url: str
 
 
 class DatastoreSearch(TypedDict, total=False):
@@ -39,8 +35,13 @@ class DatastoreSearch(TypedDict, total=False):
     total: int
 
 
-class DatastoreSearchLoadMatch(TypedDict, total=False):
+class DatastoreSearchLoadMatchRequired(TypedDict):
+    resource_id: str
+
+
+class DatastoreSearchLoadMatch(DatastoreSearchLoadMatchRequired, total=False):
+    field: str
+    filter: str
     limit: int
     offset: int
-    records: list
-    total: int
+    q: str

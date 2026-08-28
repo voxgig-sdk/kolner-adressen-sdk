@@ -23,11 +23,7 @@ type Address struct {
 
 // AddressListMatch is the typed request payload for Address.ListTyped.
 type AddressListMatch struct {
-	Description *string `json:"description,omitempty"`
 	Format *string `json:"format,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // DatastoreSearch is the typed data model for the datastore_search entity.
@@ -40,10 +36,12 @@ type DatastoreSearch struct {
 
 // DatastoreSearchLoadMatch is the typed request payload for DatastoreSearch.LoadTyped.
 type DatastoreSearchLoadMatch struct {
+	Field *string `json:"field,omitempty"`
+	Filter *string `json:"filter,omitempty"`
 	Limit *int `json:"limit,omitempty"`
 	Offset *int `json:"offset,omitempty"`
-	Records *[]any `json:"records,omitempty"`
-	Total *int `json:"total,omitempty"`
+	Q *string `json:"q,omitempty"`
+	ResourceId string `json:"resource_id"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

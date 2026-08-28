@@ -14,11 +14,7 @@
 ---@field url? string
 
 ---@class AddressListMatch
----@field description? string
 ---@field format? string
----@field id? string
----@field name? string
----@field url? string
 
 ---@class DatastoreSearch
 ---@field limit? number
@@ -27,10 +23,12 @@
 ---@field total? number
 
 ---@class DatastoreSearchLoadMatch
+---@field field? string
+---@field filter? string
 ---@field limit? number
 ---@field offset? number
----@field records? table
----@field total? number
+---@field q? string
+---@field resource_id string
 
 local M = {}
 

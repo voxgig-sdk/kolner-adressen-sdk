@@ -25,11 +25,7 @@ class Address
 /** Request payload for Address#list. */
 class AddressListMatch
 {
-    public ?string $description = null;
     public ?string $format = null;
-    public ?string $id = null;
-    public ?string $name = null;
-    public ?string $url = null;
 }
 
 /** DatastoreSearch entity data model. */
@@ -44,9 +40,11 @@ class DatastoreSearch
 /** Request payload for DatastoreSearch#load. */
 class DatastoreSearchLoadMatch
 {
+    public ?string $field = null;
+    public ?string $filter = null;
     public ?int $limit = null;
     public ?int $offset = null;
-    public ?array $records = null;
-    public ?int $total = null;
+    public ?string $q = null;
+    public string $resource_id;
 }
 

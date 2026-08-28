@@ -35,26 +35,10 @@ Address = Struct.new(
 
 # Request payload for Address#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
 # @!attribute [rw] format
 #   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
 AddressListMatch = Struct.new(
-  :description,
   :format,
-  :id,
-  :name,
-  :url,
   keyword_init: true
 )
 
@@ -81,22 +65,30 @@ DatastoreSearch = Struct.new(
 
 # Request payload for DatastoreSearch#load.
 #
+# @!attribute [rw] field
+#   @return [String, nil]
+#
+# @!attribute [rw] filter
+#   @return [String, nil]
+#
 # @!attribute [rw] limit
 #   @return [Integer, nil]
 #
 # @!attribute [rw] offset
 #   @return [Integer, nil]
 #
-# @!attribute [rw] records
-#   @return [Array, nil]
+# @!attribute [rw] q
+#   @return [String, nil]
 #
-# @!attribute [rw] total
-#   @return [Integer, nil]
+# @!attribute [rw] resource_id
+#   @return [String]
 DatastoreSearchLoadMatch = Struct.new(
+  :field,
+  :filter,
   :limit,
   :offset,
-  :records,
-  :total,
+  :q,
+  :resource_id,
   keyword_init: true
 )
 
