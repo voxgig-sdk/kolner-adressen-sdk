@@ -1,6 +1,14 @@
 # KolnerAdressen SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -74,11 +82,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "Resource download or access URL",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "address",
         "op": {
           "list": {
@@ -100,9 +113,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/dataset/adressen-k%C3%B6ln",
-                "parts": [
-                  "dataset",
-                  "adressen-k%C3%B6ln",
+                "segments": [
+                  {
+                    "lit": "dataset",
+                  },
+                  {
+                    "lit": "adressen-k%C3%B6ln",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -113,6 +130,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.resources`",
                 },
+                "parts": [
+                  "dataset",
+                  "adressen-k%C3%B6ln",
+                ],
               },
             ],
           },
@@ -198,11 +219,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/3/action/datastore_search",
-                "parts": [
-                  "api",
-                  "3",
-                  "action",
-                  "datastore_search",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "3",
+                  },
+                  {
+                    "lit": "action",
+                  },
+                  {
+                    "lit": "datastore_search",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -218,6 +247,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.result`",
                 },
+                "parts": [
+                  "api",
+                  "3",
+                  "action",
+                  "datastore_search",
+                ],
               },
             ],
           },

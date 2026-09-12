@@ -30,6 +30,7 @@ main: kit: entity: address: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "Resource download or access URL"
@@ -62,9 +63,13 @@ main: kit: entity: address: {
           }
           method: "GET"
           orig: "/dataset/adressen-k%C3%B6ln"
-          parts: [
-            "dataset"
-            "adressen-k%C3%B6ln"
+          segments: [
+            {
+              lit: "dataset"
+            }
+            {
+              lit: "adressen-k%C3%B6ln"
+            }
           ]
           select: {
             exist: [

@@ -53,10 +53,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["short"] = "Resource download or access URL",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "address",
         ["op"] = {
@@ -79,9 +84,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dataset/adressen-k%C3%B6ln",
-                ["parts"] = {
-                  "dataset",
-                  "adressen-k%C3%B6ln",
+                ["segments"] = {
+                  {
+                    ["lit"] = "dataset",
+                  },
+                  {
+                    ["lit"] = "adressen-k%C3%B6ln",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -91,6 +100,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.resources`",
+                },
+                ["parts"] = {
+                  "dataset",
+                  "adressen-k%C3%B6ln",
                 },
               },
             },
@@ -177,11 +190,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/3/action/datastore_search",
-                ["parts"] = {
-                  "api",
-                  "3",
-                  "action",
-                  "datastore_search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "3",
+                  },
+                  {
+                    ["lit"] = "action",
+                  },
+                  {
+                    ["lit"] = "datastore_search",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -196,6 +217,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.result`",
+                },
+                ["parts"] = {
+                  "api",
+                  "3",
+                  "action",
+                  "datastore_search",
                 },
               },
             },

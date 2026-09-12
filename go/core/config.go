@@ -57,10 +57,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"short": "Resource download or access URL",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "address",
 				"op": map[string]any{
@@ -83,9 +88,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/dataset/adressen-k%C3%B6ln",
-								"parts": []any{
-									"dataset",
-									"adressen-k%C3%B6ln",
+								"segments": []any{
+									map[string]any{
+										"lit": "dataset",
+									},
+									map[string]any{
+										"lit": "adressen-k%C3%B6ln",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -95,6 +104,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.resources`",
+								},
+								"parts": []any{
+									"dataset",
+									"adressen-k%C3%B6ln",
 								},
 							},
 						},
@@ -181,11 +194,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/3/action/datastore_search",
-								"parts": []any{
-									"api",
-									"3",
-									"action",
-									"datastore_search",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "3",
+									},
+									map[string]any{
+										"lit": "action",
+									},
+									map[string]any{
+										"lit": "datastore_search",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -201,6 +222,12 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.result`",
 								},
+								"parts": []any{
+									"api",
+									"3",
+									"action",
+									"datastore_search",
+								},
 							},
 						},
 					},
@@ -211,6 +238,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

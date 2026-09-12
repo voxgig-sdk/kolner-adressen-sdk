@@ -88,11 +88,19 @@ main: kit: entity: datastore_search: {
           }
           method: "GET"
           orig: "/api/3/action/datastore_search"
-          parts: [
-            "api"
-            "3"
-            "action"
-            "datastore_search"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "3"
+            }
+            {
+              lit: "action"
+            }
+            {
+              lit: "datastore_search"
+            }
           ]
           select: {
             exist: [
