@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen'
+import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen-sdk'
 
 const client = new KolnerAdressenSDK()
 ```
@@ -453,7 +453,7 @@ kolner-adressen/
 Import the SDK from the package root:
 
 ```ts
-import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen'
+import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen-sdk'
 ```
 
 ### Entity state

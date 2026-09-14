@@ -105,7 +105,7 @@ local results, err = client:Address():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
+| TypeScript | `@voxgig-sdk/kolner-adressen-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
 | Python | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
 | PHP | `voxgig-sdk/kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/kolner-adressen-sdk/go` | `go get github.com/voxgig-sdk/kolner-adressen-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Address():list()
 ### TypeScript
 
 ```ts
-import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen'
+import { KolnerAdressenSDK } from '@voxgig-sdk/kolner-adressen-sdk'
 
 const client = new KolnerAdressenSDK()
 
