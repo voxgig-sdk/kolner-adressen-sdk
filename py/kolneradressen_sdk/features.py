@@ -1,12 +1,18 @@
 # KolnerAdressen SDK feature factory
 
 from kolneradressen_sdk.feature.base_feature import KolnerAdressenBaseFeature
+from kolneradressen_sdk.feature.ratelimit_feature import KolnerAdressenRatelimitFeature
+from kolneradressen_sdk.feature.retry_feature import KolnerAdressenRetryFeature
 from kolneradressen_sdk.feature.test_feature import KolnerAdressenTestFeature
+from kolneradressen_sdk.feature.timeout_feature import KolnerAdressenTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: KolnerAdressenBaseFeature(),
+    "ratelimit": lambda: KolnerAdressenRatelimitFeature(),
+    "retry": lambda: KolnerAdressenRetryFeature(),
     "test": lambda: KolnerAdressenTestFeature(),
+    "timeout": lambda: KolnerAdressenTimeoutFeature(),
 }
 
 

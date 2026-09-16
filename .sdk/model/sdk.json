@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "address": {
           "active": true,
@@ -93,6 +157,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /dataset/adressen-k%C3%B6ln",
+                    "json": "{\"operationId\":\"getAddressesDataset\",\"parameters\":[{\"description\":\"Format of the response\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"html\",\"enum\":[\"html\",\"json\",\"rdf\",\"dcat-ap\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Metadata information about the Cologne addresses dataset\",\"properties\":{\"description\":{\"description\":\"Detailed description of the dataset\",\"type\":\"string\"},\"id\":{\"description\":\"Dataset identifier\",\"example\":\"c2f2e522-00c5-4c0c-9168-d60e716020a3\",\"type\":\"string\"},\"issued\":{\"description\":\"Publication date\",\"example\":\"2013-06-26\",\"format\":\"date\",\"type\":\"string\"},\"language\":{\"description\":\"Dataset language\",\"example\":\"de\",\"type\":\"string\"},\"license\":{\"description\":\"License information\",\"example\":\"Datenlizenz Deutschland – Zero – Version 2.0\",\"type\":\"string\"},\"modified\":{\"description\":\"Last modification date\",\"example\":\"2026-02-11\",\"format\":\"date\",\"type\":\"string\"},\"publisher\":{\"description\":\"Publishing organization\",\"example\":\"Stadt Köln\",\"type\":\"string\"},\"resources\":{\"description\":\"Available data resources\",\"items\":{\"description\":\"Information about a specific data resource\",\"properties\":{\"description\":{\"description\":\"Resource description\",\"type\":\"string\"},\"format\":{\"description\":\"Data format\",\"enum\":[\"WFS\",\"WMS\",\"KMZ\",\"JSON\",\"XLSX\",\"ZIP\",\"Shapefile\"],\"type\":\"string\"},\"id\":{\"description\":\"Resource identifier\",\"type\":\"string\"},\"name\":{\"description\":\"Resource name\",\"type\":\"string\"},\"url\":{\"description\":\"Resource download or access URL\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"spatial\":{\"description\":\"Geographic coverage\",\"example\":\"http://www.geonames.org/2886242/\",\"type\":\"string\"},\"title\":{\"description\":\"Dataset title\",\"example\":\"Adressen Köln\",\"type\":\"string\"}},\"type\":\"object\"}},\"application/rdf+xml\":{\"schema\":{\"type\":\"string\"}},\"text/html\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"Successfully retrieved dataset information\"},\"404\":{\"description\":\"Dataset not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -220,6 +290,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/3/action/datastore_search",
+                    "json": "{\"operationId\":\"searchAddresses\",\"parameters\":[{\"description\":\"Resource ID for the addresses dataset\",\"in\":\"query\",\"name\":\"resource_id\",\"required\":true,\"schema\":{\"example\":\"c2f2e522-00c5-4c0c-9168-d60e716020a3\",\"type\":\"string\"}},{\"description\":\"Maximum number of results to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":100,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"Search query string\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"JSON string of field filters\",\"in\":\"query\",\"name\":\"filters\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Comma-separated list of fields to return\",\"in\":\"query\",\"name\":\"fields\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Response from the address search API\",\"properties\":{\"result\":{\"properties\":{\"limit\":{\"description\":\"Number of records returned per page\",\"type\":\"integer\"},\"offset\":{\"description\":\"Current offset for pagination\",\"type\":\"integer\"},\"records\":{\"description\":\"Array of address records\",\"items\":{\"description\":\"A single address record in Cologne\",\"properties\":{\"block\":{\"description\":\"Block identifier\",\"type\":\"string\"},\"blockseite\":{\"description\":\"Block side\",\"type\":\"string\"},\"gebaeude_id_alkis\":{\"description\":\"Building ID from ALKIS (Amtliches Liegenschaftskataster-Informationssystem)\",\"type\":\"string\"},\"hausnummer\":{\"description\":\"House number\",\"example\":\"123\",\"type\":\"string\"},\"hausnummer_zusatz\":{\"description\":\"House number suffix\",\"example\":\"a\",\"type\":\"string\"},\"hochwert\":{\"description\":\"Northing coordinate (ETRS 1989 UTM Zone 32N)\",\"format\":\"double\",\"type\":\"number\"},\"id\":{\"description\":\"Unique address identifier\",\"type\":\"string\"},\"latitude\":{\"description\":\"Latitude (WGS84)\",\"format\":\"double\",\"maximum\":90,\"minimum\":-90,\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude (WGS84)\",\"format\":\"double\",\"maximum\":180,\"minimum\":-180,\"type\":\"number\"},\"nutzung_gebaeude_funktion\":{\"description\":\"Building usage/function\",\"type\":\"string\"},\"plz\":{\"description\":\"Postal code\",\"example\":\"50667\",\"type\":\"string\"},\"rechtswert\":{\"description\":\"Easting coordinate (ETRS 1989 UTM Zone 32N)\",\"format\":\"double\",\"type\":\"number\"},\"stadtbezirk\":{\"description\":\"City district (Stadtbezirk)\",\"type\":\"string\"},\"stadtteil\":{\"description\":\"District (Stadtteil)\",\"type\":\"string\"},\"stadtviertel\":{\"description\":\"Quarter (Stadtviertel)\",\"type\":\"string\"},\"statistisches_quartier\":{\"description\":\"Statistical quarter\",\"type\":\"string\"},\"strasse\":{\"description\":\"Street name\",\"example\":\"Kölner Straße\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"description\":\"Total number of records matching the query\",\"example\":163000,\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"Whether the request was successful\",\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Successfully retrieved address data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"404\":{\"description\":\"Resource not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/3/action/datastore_search",
@@ -261,13 +337,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -358,6 +644,102 @@
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
           "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
+          "version": "0.0.1"
         }
       },
       "flow": {
@@ -443,6 +825,48 @@
         "x-documentation": "https://offenedaten-koeln.de/dataset/adressen-k%C3%B6ln"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -997,6 +1421,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1038,7 +1463,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.KOLNER_ADRESSEN_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'datastore_search.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'datastore_search.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "limit", "req": false, "short": "Number of records returned per page", "type": "`$INTEGER`", "index$": 0 }, { "active": true, "name": "offset", "req": false, "short": "Current offset for pagination", "type": "`$INTEGER`", "index$": 1 }, { "active": true, "name": "records", "req": false, "short": "Array of address records", "type": "`$ARRAY`", "index$": 2 }, { "active": true, "name": "total", "req": false, "short": "Total number of records matching the query", "type": "`$INTEGER`", "index$": 3 }], "name": "datastore_search", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "field", "orig": "field", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "query", "name": "filter", "orig": "filter", "reqd": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "example": 100, "kind": "query", "name": "limit", "orig": "limit", "reqd": false, "type": "`$INTEGER`", "index$": 2 }, { "active": true, "example": 0, "kind": "query", "name": "offset", "orig": "offset", "reqd": false, "type": "`$INTEGER`", "index$": 3 }, { "active": true, "kind": "query", "name": "q", "orig": "q", "reqd": false, "type": "`$STRING`", "index$": 4 }, { "active": true, "example": "c2f2e522-00c5-4c0c-9168-d60e716020a3", "kind": "query", "name": "resource_id", "orig": "resource_id", "reqd": true, "type": "`$STRING`", "index$": 5 }] }, "contract": { "id": "GET /api/3/action/datastore_search", "json": "{\"operationId\":\"searchAddresses\",\"parameters\":[{\"description\":\"Resource ID for the addresses dataset\",\"in\":\"query\",\"name\":\"resource_id\",\"required\":true,\"schema\":{\"example\":\"c2f2e522-00c5-4c0c-9168-d60e716020a3\",\"type\":\"string\"}},{\"description\":\"Maximum number of results to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":100,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"Search query string\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"JSON string of field filters\",\"in\":\"query\",\"name\":\"filters\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Comma-separated list of fields to return\",\"in\":\"query\",\"name\":\"fields\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Response from the address search API\",\"properties\":{\"result\":{\"properties\":{\"limit\":{\"description\":\"Number of records returned per page\",\"type\":\"integer\"},\"offset\":{\"description\":\"Current offset for pagination\",\"type\":\"integer\"},\"records\":{\"description\":\"Array of address records\",\"items\":{\"description\":\"A single address record in Cologne\",\"properties\":{\"block\":{\"description\":\"Block identifier\",\"type\":\"string\"},\"blockseite\":{\"description\":\"Block side\",\"type\":\"string\"},\"gebaeude_id_alkis\":{\"description\":\"Building ID from ALKIS (Amtliches Liegenschaftskataster-Informationssystem)\",\"type\":\"string\"},\"hausnummer\":{\"description\":\"House number\",\"example\":\"123\",\"type\":\"string\"},\"hausnummer_zusatz\":{\"description\":\"House number suffix\",\"example\":\"a\",\"type\":\"string\"},\"hochwert\":{\"description\":\"Northing coordinate (ETRS 1989 UTM Zone 32N)\",\"format\":\"double\",\"type\":\"number\"},\"id\":{\"description\":\"Unique address identifier\",\"type\":\"string\"},\"latitude\":{\"description\":\"Latitude (WGS84)\",\"format\":\"double\",\"maximum\":90,\"minimum\":-90,\"type\":\"number\"},\"longitude\":{\"description\":\"Longitude (WGS84)\",\"format\":\"double\",\"maximum\":180,\"minimum\":-180,\"type\":\"number\"},\"nutzung_gebaeude_funktion\":{\"description\":\"Building usage/function\",\"type\":\"string\"},\"plz\":{\"description\":\"Postal code\",\"example\":\"50667\",\"type\":\"string\"},\"rechtswert\":{\"description\":\"Easting coordinate (ETRS 1989 UTM Zone 32N)\",\"format\":\"double\",\"type\":\"number\"},\"stadtbezirk\":{\"description\":\"City district (Stadtbezirk)\",\"type\":\"string\"},\"stadtteil\":{\"description\":\"District (Stadtteil)\",\"type\":\"string\"},\"stadtviertel\":{\"description\":\"Quarter (Stadtviertel)\",\"type\":\"string\"},\"statistisches_quartier\":{\"description\":\"Statistical quarter\",\"type\":\"string\"},\"strasse\":{\"description\":\"Street name\",\"example\":\"Kölner Straße\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"description\":\"Total number of records matching the query\",\"example\":163000,\"type\":\"integer\"}},\"type\":\"object\"},\"success\":{\"description\":\"Whether the request was successful\",\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Successfully retrieved address data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"404\":{\"description\":\"Resource not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/3/action/datastore_search", "segments": [{ "lit": "api" }, { "lit": "3" }, { "lit": "action" }, { "lit": "datastore_search" }], "select": { "exist": ["field", "filter", "limit", "offset", "q", "resource_id"] }, "transform": { "req": "`reqdata`", "res": "`body.result`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "datastore_search", "name__orig": "datastore_search", "Name": "DatastoreSearch", "name_": "datastore_search", "name-": "datastore-search", "NAME": "DATASTORE_SEARCH", "index$": 1 }, { "active": true, "entity": "datastore_search", "key$": "BasicDatastoreSearchFlow", "kind": "basic", "name": "BasicDatastoreSearchFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "datastore_search_ref01", "srcdatavar": "datastore_search_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-datastore_search_ref01" } }], "index$": 0 }] }, 'DatastoreSearch');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID': idmap,
         'KOLNER_ADRESSEN_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID'];
     const live = 'TRUE' === env.KOLNER_ADRESSEN_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['KOLNER_ADRESSEN_TEST_DATASTORE_SEARCH_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.KolnerAdressenSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -126,7 +124,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -138,7 +137,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.KOLNER_ADRESSEN_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

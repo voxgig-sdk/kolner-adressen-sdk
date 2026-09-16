@@ -2,24 +2,24 @@
   "existing": {
     "datastore_search": {
       "DATASTORE_SEARCH00": {
-        "limit": "s28",
-        "offset": "s29",
+        "limit": 40,
+        "offset": 41,
         "records": [],
-        "total": "s2b",
+        "total": 43,
         "id": "DATASTORE_SEARCH00"
       },
       "DATASTORE_SEARCH01": {
-        "limit": "s50",
-        "offset": "s51",
+        "limit": 80,
+        "offset": 81,
         "records": [],
-        "total": "s53",
+        "total": 83,
         "id": "DATASTORE_SEARCH01"
       },
       "DATASTORE_SEARCH02": {
-        "limit": "s78",
-        "offset": "s79",
+        "limit": 120,
+        "offset": 121,
         "records": [],
-        "total": "s7b",
+        "total": 123,
         "id": "DATASTORE_SEARCH02"
       }
     }
@@ -27,10 +27,218 @@
   "new": {
     "datastore_search": {
       "datastore_search_ref01": {
-        "limit": "sa0",
-        "offset": "sa1",
+        "limit": 160,
+        "offset": 161,
         "records": [],
-        "total": "sa3"
+        "total": 163
+      }
+    }
+  },
+  "requests": {
+    "GET /api/3/action/datastore_search": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchAddresses",
+        "parameters": [
+          {
+            "description": "Resource ID for the addresses dataset",
+            "in": "query",
+            "name": "resource_id",
+            "required": true,
+            "schema": {
+              "example": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Maximum number of results to return",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Offset for pagination",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search query string",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "JSON string of field filters",
+            "in": "query",
+            "name": "filters",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated list of fields to return",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Response from the address search API",
+                  "properties": {
+                    "result": {
+                      "properties": {
+                        "limit": {
+                          "description": "Number of records returned per page",
+                          "type": "integer"
+                        },
+                        "offset": {
+                          "description": "Current offset for pagination",
+                          "type": "integer"
+                        },
+                        "records": {
+                          "description": "Array of address records",
+                          "items": {
+                            "description": "A single address record in Cologne",
+                            "properties": {
+                              "block": {
+                                "description": "Block identifier",
+                                "type": "string"
+                              },
+                              "blockseite": {
+                                "description": "Block side",
+                                "type": "string"
+                              },
+                              "gebaeude_id_alkis": {
+                                "description": "Building ID from ALKIS (Amtliches Liegenschaftskataster-Informationssystem)",
+                                "type": "string"
+                              },
+                              "hausnummer": {
+                                "description": "House number",
+                                "example": "123",
+                                "type": "string"
+                              },
+                              "hausnummer_zusatz": {
+                                "description": "House number suffix",
+                                "example": "a",
+                                "type": "string"
+                              },
+                              "hochwert": {
+                                "description": "Northing coordinate (ETRS 1989 UTM Zone 32N)",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "id": {
+                                "description": "Unique address identifier",
+                                "type": "string"
+                              },
+                              "latitude": {
+                                "description": "Latitude (WGS84)",
+                                "format": "double",
+                                "maximum": 90,
+                                "minimum": -90,
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "description": "Longitude (WGS84)",
+                                "format": "double",
+                                "maximum": 180,
+                                "minimum": -180,
+                                "type": "number"
+                              },
+                              "nutzung_gebaeude_funktion": {
+                                "description": "Building usage/function",
+                                "type": "string"
+                              },
+                              "plz": {
+                                "description": "Postal code",
+                                "example": "50667",
+                                "type": "string"
+                              },
+                              "rechtswert": {
+                                "description": "Easting coordinate (ETRS 1989 UTM Zone 32N)",
+                                "format": "double",
+                                "type": "number"
+                              },
+                              "stadtbezirk": {
+                                "description": "City district (Stadtbezirk)",
+                                "type": "string"
+                              },
+                              "stadtteil": {
+                                "description": "District (Stadtteil)",
+                                "type": "string"
+                              },
+                              "stadtviertel": {
+                                "description": "Quarter (Stadtviertel)",
+                                "type": "string"
+                              },
+                              "statistisches_quartier": {
+                                "description": "Statistical quarter",
+                                "type": "string"
+                              },
+                              "strasse": {
+                                "description": "Street name",
+                                "example": "Kölner Straße",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "total": {
+                          "description": "Total number of records matching the query",
+                          "example": 163000,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "description": "Whether the request was successful",
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successfully retrieved address data"
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }
