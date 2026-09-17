@@ -1,4 +1,4 @@
 # Entity Models
 
-@"address.aon"
-@"datastore_search.aon"
+@"./address.aon"
+@"./datastore_search.aon"

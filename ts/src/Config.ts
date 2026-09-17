@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      address: {
-      },
-
-      datastore_search: {
-      },
-
+        address: {
+        },
+  
+        datastore_search: {
+        },
+  
     }
   }
 

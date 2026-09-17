@@ -105,12 +105,12 @@ local results, err = client:Address():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/kolner-adressen-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
-| Python | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
-| PHP | `voxgig-sdk/kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
+| TypeScript | `@voxgig-sdk/kolner-adressen-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/tags) |
+| Python | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/tags) |
+| PHP | `voxgig-sdk/kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/kolner-adressen-sdk/go` | `go get github.com/voxgig-sdk/kolner-adressen-sdk/go@latest` |
-| Ruby | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
-| Lua | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases) |
+| Ruby | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/tags) |
+| Lua | `voxgig-sdk-kolner-adressen` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kolner-adressen-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/kolner-adressen-sdk/go-cli` | `go install github.com/voxgig-sdk/kolner-adressen-sdk/go-cli/cmd/kolner-adressen@latest` |
 | Go MCP server | `github.com/voxgig-sdk/kolner-adressen-sdk/go-mcp` | `go get github.com/voxgig-sdk/kolner-adressen-sdk/go-mcp@latest` |
 
