@@ -117,29 +117,34 @@ def make_config():
         "fields": [
           {
             "name": "description",
-            "short": "Resource description",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Resource description",
           },
           {
             "name": "format",
-            "short": "Data format",
+            "title": "Format",
             "type": "`$STRING`",
+            "short": "Data format",
           },
           {
             "name": "id",
-            "short": "Resource identifier",
+            "title": "Id",
             "type": "`$STRING`",
+            "short": "Resource identifier",
           },
           {
             "name": "name",
-            "short": "Resource name",
+            "title": "Name",
             "type": "`$STRING`",
+            "short": "Resource name",
           },
           {
-            "format": "uri",
             "name": "url",
-            "short": "Resource download or access URL",
+            "title": "Url",
             "type": "`$STRING`",
+            "short": "Resource download or access URL",
+            "format": "uri",
           },
         ],
         "id": {
@@ -153,17 +158,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "html",
-                      "kind": "query",
-                      "name": "format",
-                      "orig": "format",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/dataset/adressen-k%C3%B6ln",
@@ -175,19 +169,31 @@ def make_config():
                     "lit": "adressen-k%C3%B6ln",
                   },
                 ],
+                "parts": [
+                  "dataset",
+                  "adressen-k%C3%B6ln",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.resources`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "format",
+                      "orig": "format",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "html",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "format",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.resources`",
-                },
-                "parts": [
-                  "dataset",
-                  "adressen-k%C3%B6ln",
-                ],
               },
             ],
           },
@@ -200,23 +206,27 @@ def make_config():
         "fields": [
           {
             "name": "limit",
-            "short": "Number of records returned per page",
+            "title": "Limit",
             "type": "`$INTEGER`",
+            "short": "Number of records returned per page",
           },
           {
             "name": "offset",
-            "short": "Current offset for pagination",
+            "title": "Offset",
             "type": "`$INTEGER`",
+            "short": "Current offset for pagination",
           },
           {
             "name": "records",
-            "short": "Array of address records",
+            "title": "Records",
             "type": "`$ARRAY`",
+            "short": "Array of address records",
           },
           {
             "name": "total",
-            "short": "Total number of records matching the query",
+            "title": "Total",
             "type": "`$INTEGER`",
+            "short": "Total number of records matching the query",
           },
         ],
         "name": "datastore_search",
@@ -226,50 +236,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "field",
-                      "orig": "field",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "filter",
-                      "orig": "filter",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 100,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "offset",
-                      "orig": "offset",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
-                      "kind": "query",
-                      "name": "resource_id",
-                      "orig": "resource_id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/3/action/datastore_search",
@@ -287,6 +253,61 @@ def make_config():
                     "lit": "datastore_search",
                   },
                 ],
+                "parts": [
+                  "api",
+                  "3",
+                  "action",
+                  "datastore_search",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.result`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "field",
+                      "orig": "field",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "filter",
+                      "orig": "filter",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 100,
+                    },
+                    {
+                      "name": "offset",
+                      "orig": "offset",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "resource_id",
+                      "orig": "resource_id",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "field",
@@ -297,16 +318,6 @@ def make_config():
                     "resource_id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.result`",
-                },
-                "parts": [
-                  "api",
-                  "3",
-                  "action",
-                  "datastore_search",
-                ],
               },
             ],
           },

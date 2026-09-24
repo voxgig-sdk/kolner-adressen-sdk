@@ -1,0 +1,135 @@
+# Entity: datastore_search
+
+main: kit: entity: datastore_search: {
+
+  alias: field: {}
+
+  fields: {
+    limit: {
+      h: "Limit"
+      n: "limit"
+      r: false
+      sh: "Number of records returned per page"
+      t: "`$INTEGER`"
+    }
+    offset: {
+      h: "Offset"
+      n: "offset"
+      r: false
+      sh: "Current offset for pagination"
+      t: "`$INTEGER`"
+    }
+    records: {
+      h: "Records"
+      n: "records"
+      r: false
+      sh: "Array of address records"
+      t: "`$ARRAY`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: false
+      sh: "Total number of records matching the query"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "datastore_search"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/3/action/datastore_search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "filter"
+                or: "filter"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "c2f2e522-00c5-4c0c-9168-d60e716020a3"
+                k: "query"
+                n: "resource_id"
+                or: "resource_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/3/action/datastore_search"
+          q: {
+            exist: [
+              "field"
+              "filter"
+              "limit"
+              "offset"
+              "q"
+              "resource_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "3"
+            }
+            {
+              lit: "action"
+            }
+            {
+              lit: "datastore_search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.result`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,7 +1,7 @@
 // Typed models for the KolnerAdressen SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // Address is the typed data model for the address entity.
 type Address struct {
-	Description *string `json:"description,omitempty"`
-	Format *string `json:"format,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // AddressListMatch is the typed request payload for Address.ListTyped.
@@ -28,10 +23,6 @@ type AddressListMatch struct {
 
 // DatastoreSearch is the typed data model for the datastore_search entity.
 type DatastoreSearch struct {
-	Limit *int `json:"limit,omitempty"`
-	Offset *int `json:"offset,omitempty"`
-	Records *[]any `json:"records,omitempty"`
-	Total *int `json:"total,omitempty"`
 }
 
 // DatastoreSearchLoadMatch is the typed request payload for DatastoreSearch.LoadTyped.

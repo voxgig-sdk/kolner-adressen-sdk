@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -142,29 +135,34 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Resource description",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Resource description"
         },
         {
           "name": "format",
-          "short": "Data format",
-          "type": "`$STRING`"
+          "title": "Format",
+          "type": "`$STRING`",
+          "short": "Data format"
         },
         {
           "name": "id",
-          "short": "Resource identifier",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Resource identifier"
         },
         {
           "name": "name",
-          "short": "Resource name",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Resource name"
         },
         {
-          "format": "uri",
           "name": "url",
+          "title": "Url",
+          "type": "`$STRING`",
           "short": "Resource download or access URL",
-          "type": "`$STRING`"
+          "format": "uri"
         }
       ],
       "id": {
@@ -178,17 +176,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "html",
-                    "kind": "query",
-                    "name": "format",
-                    "orig": "format",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/dataset/adressen-k%C3%B6ln",
@@ -200,19 +187,31 @@ class Config {
                   "lit": "adressen-k%C3%B6ln"
                 }
               ],
-              "select": {
-                "exist": [
-                  "format"
-                ]
-              },
+              "parts": [
+                "dataset",
+                "adressen-k%C3%B6ln"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.resources`"
               },
-              "parts": [
-                "dataset",
-                "adressen-k%C3%B6ln"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "format",
+                    "orig": "format",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "html"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "format"
+                ]
+              }
             }
           ]
         }
@@ -225,23 +224,27 @@ class Config {
       "fields": [
         {
           "name": "limit",
-          "short": "Number of records returned per page",
-          "type": "`$INTEGER`"
+          "title": "Limit",
+          "type": "`$INTEGER`",
+          "short": "Number of records returned per page"
         },
         {
           "name": "offset",
-          "short": "Current offset for pagination",
-          "type": "`$INTEGER`"
+          "title": "Offset",
+          "type": "`$INTEGER`",
+          "short": "Current offset for pagination"
         },
         {
           "name": "records",
-          "short": "Array of address records",
-          "type": "`$ARRAY`"
+          "title": "Records",
+          "type": "`$ARRAY`",
+          "short": "Array of address records"
         },
         {
           "name": "total",
-          "short": "Total number of records matching the query",
-          "type": "`$INTEGER`"
+          "title": "Total",
+          "type": "`$INTEGER`",
+          "short": "Total number of records matching the query"
         }
       ],
       "name": "datastore_search",
@@ -251,50 +254,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "filter",
-                    "orig": "filter",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 100,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "q",
-                    "orig": "q",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
-                    "kind": "query",
-                    "name": "resource_id",
-                    "orig": "resource_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/3/action/datastore_search",
@@ -312,6 +271,61 @@ class Config {
                   "lit": "datastore_search"
                 }
               ],
+              "parts": [
+                "api",
+                "3",
+                "action",
+                "datastore_search"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.result`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "filter",
+                    "orig": "filter",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 100
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "q",
+                    "orig": "q",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "resource_id",
+                    "orig": "resource_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "c2f2e522-00c5-4c0c-9168-d60e716020a3"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "field",
@@ -321,17 +335,7 @@ class Config {
                   "q",
                   "resource_id"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.result`"
-              },
-              "parts": [
-                "api",
-                "3",
-                "action",
-                "datastore_search"
-              ]
+              }
             }
           ]
         }

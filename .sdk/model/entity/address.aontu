@@ -1,0 +1,100 @@
+# Entity: address
+
+main: kit: entity: address: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Resource description"
+      t: "`$STRING`"
+    }
+    format: {
+      h: "Format"
+      n: "format"
+      r: false
+      sh: "Data format"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Resource identifier"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Resource name"
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "Resource download or access URL"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "address"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /dataset/adressen-k%C3%B6ln"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "html"
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/dataset/adressen-k%C3%B6ln"
+          q: {
+            exist: [
+              "format"
+            ]
+          }
+          s: [
+            {
+              lit: "dataset"
+            }
+            {
+              lit: "adressen-k%C3%B6ln"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resources`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

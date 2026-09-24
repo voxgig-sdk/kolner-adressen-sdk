@@ -19,7 +19,6 @@ import type {
   AddressListMatch,
 } from '../KolnerAdressenTypes'
 
-// TODO: needs Entity superclass
 class AddressEntity extends KolnerAdressenEntityBase<Address> {
 
   constructor(client: KolnerAdressenSDK, entopts: any) {

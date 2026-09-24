@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddressEntity = void 0;
 const KolnerAdressenEntityBase_1 = require("../KolnerAdressenEntityBase");
-// TODO: needs Entity superclass
 class AddressEntity extends KolnerAdressenEntityBase_1.KolnerAdressenEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

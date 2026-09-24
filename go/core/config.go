@@ -92,29 +92,34 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
-						"short": "Resource description",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Resource description",
 					},
 					map[string]any{
 						"name": "format",
-						"short": "Data format",
+						"title": "Format",
 						"type": "`$STRING`",
+						"short": "Data format",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Resource identifier",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Resource identifier",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Resource name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Resource name",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
-						"short": "Resource download or access URL",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "Resource download or access URL",
+						"format": "uri",
 					},
 				},
 				"id": map[string]any{
@@ -128,17 +133,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "html",
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/dataset/adressen-k%C3%B6ln",
@@ -150,18 +144,30 @@ func MakeConfig() map[string]any {
 										"lit": "adressen-k%C3%B6ln",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"format",
-									},
+								"parts": []any{
+									"dataset",
+									"adressen-k%C3%B6ln",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.resources`",
 								},
-								"parts": []any{
-									"dataset",
-									"adressen-k%C3%B6ln",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "html",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"format",
+									},
 								},
 							},
 						},
@@ -175,23 +181,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "limit",
-						"short": "Number of records returned per page",
+						"title": "Limit",
 						"type": "`$INTEGER`",
+						"short": "Number of records returned per page",
 					},
 					map[string]any{
 						"name": "offset",
-						"short": "Current offset for pagination",
+						"title": "Offset",
 						"type": "`$INTEGER`",
+						"short": "Current offset for pagination",
 					},
 					map[string]any{
 						"name": "records",
-						"short": "Array of address records",
+						"title": "Records",
 						"type": "`$ARRAY`",
+						"short": "Array of address records",
 					},
 					map[string]any{
 						"name": "total",
-						"short": "Total number of records matching the query",
+						"title": "Total",
 						"type": "`$INTEGER`",
+						"short": "Total number of records matching the query",
 					},
 				},
 				"name": "datastore_search",
@@ -201,50 +211,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "filter",
-											"orig": "filter",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 100,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
-											"kind": "query",
-											"name": "resource_id",
-											"orig": "resource_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/3/action/datastore_search",
@@ -262,6 +228,61 @@ func MakeConfig() map[string]any {
 										"lit": "datastore_search",
 									},
 								},
+								"parts": []any{
+									"api",
+									"3",
+									"action",
+									"datastore_search",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.result`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "filter",
+											"orig": "filter",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 100,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "resource_id",
+											"orig": "resource_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"field",
@@ -271,16 +292,6 @@ func MakeConfig() map[string]any {
 										"q",
 										"resource_id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.result`",
-								},
-								"parts": []any{
-									"api",
-									"3",
-									"action",
-									"datastore_search",
 								},
 							},
 						},
