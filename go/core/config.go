@@ -243,13 +243,13 @@ func MakeConfig() map[string]any {
 									"query": []any{
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "filter",
-											"orig": "filter",
+											"orig": "filters",
 											"type": "`$STRING`",
 											"kind": "query",
 										},

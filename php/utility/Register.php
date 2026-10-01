@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 KolnerAdressenUtility::setRegistrar(function (KolnerAdressenUtility $u): void {
     $u->clean = [KolnerAdressenClean::class, 'call'];
+    $u->clean_add = [KolnerAdressenClean::class, 'add'];
+    $u->clean_explain = [KolnerAdressenDone::class, 'clean_explain'];
     $u->done = [KolnerAdressenDone::class, 'call'];
     $u->make_error = [KolnerAdressenMakeError::class, 'call'];
     $u->feature_add = [KolnerAdressenFeatureAdd::class, 'call'];

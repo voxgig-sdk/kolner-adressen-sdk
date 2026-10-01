@@ -239,13 +239,13 @@ local function make_config()
                   ["query"] = {
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },
                     {
                       ["name"] = "filter",
-                      ["orig"] = "filter",
+                      ["orig"] = "filters",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                     },

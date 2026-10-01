@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 KolnerAdressenUtility.registrar = ->(u) {
   u.clean = KolnerAdressenUtilities::Clean
+  u.clean_add = KolnerAdressenUtilities::CleanAdd
+  u.clean_explain = KolnerAdressenUtilities::CleanExplain
   u.done = KolnerAdressenUtilities::Done
   u.make_error = KolnerAdressenUtilities::MakeError
   u.feature_add = KolnerAdressenUtilities::FeatureAdd

@@ -51,14 +51,14 @@ main: kit: entity: datastore_search: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$STRING`"
               }
               {
                 k: "query"
                 n: "filter"
-                or: "filter"
+                or: "filters"
                 r: false
                 t: "`$STRING`"
               }
