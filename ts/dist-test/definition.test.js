@@ -16,11 +16,23 @@ const PLAN = [
         "path": "/dataset/adressen-k%C3%B6ln",
         "args": [],
         "select": {
-            "format": "v1"
+            "format": "html"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json",
+            "text/html",
+            "application/rdf+xml"
+        ],
         "query": [
             "format"
+        ],
+        "queryArgs": [
+            {
+                "name": "format",
+                "wire": "format"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -36,11 +48,11 @@ const PLAN = [
             "language": "de",
             "resources": [
                 {
-                    "description": "x",
-                    "format": "WFS",
                     "id": "x",
                     "name": "x",
-                    "url": "x"
+                    "format": "WFS",
+                    "url": "x",
+                    "description": "x"
                 }
             ]
         },
@@ -54,14 +66,18 @@ const PLAN = [
         "path": "/api/3/action/datastore_search",
         "args": [],
         "select": {
+            "resource_id": "c2f2e522-00c5-4c0c-9168-d60e716020a3",
             "field": "v1",
             "filter": "v1",
-            "limit": "v1",
-            "offset": "v1",
-            "q": "v1",
-            "resource_id": "c2f2e522-00c5-4c0c-9168-d60e716020a3"
+            "limit": 100,
+            "offset": 0,
+            "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "resource_id",
             "limit",
@@ -70,35 +86,61 @@ const PLAN = [
             "filters",
             "fields"
         ],
+        "queryArgs": [
+            {
+                "name": "field",
+                "wire": "fields"
+            },
+            {
+                "name": "filter",
+                "wire": "filters"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            },
+            {
+                "name": "resource_id",
+                "wire": "resource_id"
+            }
+        ],
         "auth": null,
         "status": 200,
         "sample": {
             "success": true,
             "result": {
-                "limit": 1,
-                "offset": 1,
                 "records": [
                     {
-                        "block": "x",
-                        "blockseite": "x",
-                        "gebaeude_id_alkis": "x",
+                        "id": "x",
+                        "strasse": "Kölner Straße",
                         "hausnummer": "123",
                         "hausnummer_zusatz": "a",
-                        "hochwert": 1,
-                        "id": "x",
-                        "latitude": 1,
-                        "longitude": 1,
-                        "nutzung_gebaeude_funktion": "x",
                         "plz": "50667",
-                        "rechtswert": 1,
                         "stadtbezirk": "x",
                         "stadtteil": "x",
                         "stadtviertel": "x",
                         "statistisches_quartier": "x",
-                        "strasse": "Kölner Straße"
+                        "block": "x",
+                        "blockseite": "x",
+                        "gebaeude_id_alkis": "x",
+                        "nutzung_gebaeude_funktion": "x",
+                        "rechtswert": 1,
+                        "hochwert": 1,
+                        "longitude": 1,
+                        "latitude": 1
                     }
                 ],
-                "total": 163000
+                "total": 163000,
+                "limit": 1,
+                "offset": 1
             }
         },
         "idField": "id"

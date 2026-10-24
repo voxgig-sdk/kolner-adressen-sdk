@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -186,13 +187,24 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "example": "html",
+                      "field": True,
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "format",
+                "select": {},
+                "response": {
+                  "alternatives": [
+                    {
+                      "kind": "raw",
+                      "media": "application/rdf+xml",
+                    },
+                    {
+                      "kind": "raw",
+                      "media": "text/html",
+                    },
                   ],
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -284,6 +296,7 @@ def make_config():
                       "type": "`$INTEGER`",
                       "kind": "query",
                       "example": 100,
+                      "field": True,
                     },
                     {
                       "name": "offset",
@@ -291,6 +304,7 @@ def make_config():
                       "type": "`$INTEGER`",
                       "kind": "query",
                       "example": 0,
+                      "field": True,
                     },
                     {
                       "name": "q",
@@ -310,13 +324,12 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "field",
-                    "filter",
-                    "limit",
-                    "offset",
-                    "q",
                     "resource_id",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

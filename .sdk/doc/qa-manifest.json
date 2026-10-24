@@ -3,5 +3,22 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Array of address records",
+      "Current offset for pagination",
+      "Data format",
+      "Dataset identifier",
+      "Detailed description of the dataset",
+      "Number of records returned per page",
+      "Offene Daten Köln Production Server",
+      "Resource download or access URL",
+      "Resource name",
+      "Successfully retrieved address data",
+      "Successfully retrieved dataset information",
+      "This API provides access to a dataset containing addresses within the city of Cologne. It includes geospatial information and various formats for data retrieval, enabling navigation and analysis of geographic data related to buildings and urban structures. The dataset contains approximately 163,000 address objects with geospatial coordinates and building information from the municipal area classification system (Kommunale Gebietsgliederung).",
+      "Total number of records matching the query"
+    ]
+  }
 }

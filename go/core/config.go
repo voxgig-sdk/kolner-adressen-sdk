@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -161,13 +162,24 @@ func MakeConfig() map[string]any {
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "html",
+											"field": true,
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"format",
+								"select": map[string]any{},
+								"response": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"kind": "raw",
+											"media": "application/rdf+xml",
+										},
+										map[string]any{
+											"kind": "raw",
+											"media": "text/html",
+										},
 									},
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -259,6 +271,7 @@ func MakeConfig() map[string]any {
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 100,
+											"field": true,
 										},
 										map[string]any{
 											"name": "offset",
@@ -266,6 +279,7 @@ func MakeConfig() map[string]any {
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 0,
+											"field": true,
 										},
 										map[string]any{
 											"name": "q",
@@ -285,13 +299,12 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"field",
-										"filter",
-										"limit",
-										"offset",
-										"q",
 										"resource_id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

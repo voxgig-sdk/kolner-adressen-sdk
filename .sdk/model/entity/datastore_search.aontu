@@ -99,13 +99,12 @@ main: kit: entity: datastore_search: {
           o: "/api/3/action/datastore_search"
           q: {
             exist: [
-              "field"
-              "filter"
-              "limit"
-              "offset"
-              "q"
               "resource_id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

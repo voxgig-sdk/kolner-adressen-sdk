@@ -73,10 +73,19 @@ main: kit: entity: address: {
           }
           m: "GET"
           o: "/dataset/adressen-k%C3%B6ln"
-          q: {
-            exist: [
-              "format"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "application/rdf+xml"
+              }
+              {
+                kind: "raw"
+                media: "text/html"
+              }
             ]
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

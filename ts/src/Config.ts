@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -203,14 +204,25 @@ class Config {
                     "orig": "format",
                     "type": "`$STRING`",
                     "kind": "query",
-                    "example": "html"
+                    "example": "html",
+                    "field": true
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "format"
-                ]
+              "select": {},
+              "response": {
+                "alternatives": [
+                  {
+                    "kind": "raw",
+                    "media": "application/rdf+xml"
+                  },
+                  {
+                    "kind": "raw",
+                    "media": "text/html"
+                  }
+                ],
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -301,14 +313,16 @@ class Config {
                     "orig": "limit",
                     "type": "`$INTEGER`",
                     "kind": "query",
-                    "example": 100
+                    "example": 100,
+                    "field": true
                   },
                   {
                     "name": "offset",
                     "orig": "offset",
                     "type": "`$INTEGER`",
                     "kind": "query",
-                    "example": 0
+                    "example": 0,
+                    "field": true
                   },
                   {
                     "name": "q",
@@ -328,13 +342,12 @@ class Config {
               },
               "select": {
                 "exist": [
-                  "field",
-                  "filter",
-                  "limit",
-                  "offset",
-                  "q",
                   "resource_id"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

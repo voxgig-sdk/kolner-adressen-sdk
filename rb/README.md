@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/kolner-adressen-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/kolner-adressen-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = KolnerAdressenSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Address records — iterate directly.
+  # list returns an Array of Address entities, one per record; data_get reads the record.
   addresss = client.Address.list
   addresss.each do |item|
-    puts "#{item["id"]} #{item["description"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["description"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -128,10 +129,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = KolnerAdressenSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-address = client.Address.list()
-puts address
+# list returns an Array of Address entities, one per mock record (raises on
+# error); data_get reads each record.
+addresss = client.Address.list()
+addresss.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -216,8 +217,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -227,9 +228,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `KolnerAdressenError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`KolnerAdressenError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -299,8 +301,9 @@ Create an instance: `address = client.Address`
 #### Example: List
 
 ```ruby
-# list returns an Array of Address records (raises on error).
+# list returns an Array of Address entities, one per record (raises on error).
 addresss = client.Address.list
+addresss.each { |item| puts item.data_get }
 ```
 
 
